@@ -1,0 +1,150 @@
+{
+ "lang": "ja",
+ "situacoes": [
+  {
+   "id": "apresentacao",
+   "titulo": "Apresentar-se",
+   "objetivo": "Primeiro contato, do jeito japonês.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "はじめまして。アナです。",
+     "p": "Prazer em conhecê-lo. Sou a Ana."
+    },
+    {
+     "q": "Você",
+     "t": "ブラジルから来ました。",
+     "p": "Vim do Brasil."
+    },
+    {
+     "q": "Você",
+     "t": "日本語を勉強しています。",
+     "p": "Estou estudando japonês."
+    },
+    {
+     "q": "Você",
+     "t": "よろしくお願いします。",
+     "p": "Prazer, conto com você (fórmula de encerramento)."
+    }
+   ]
+  },
+  {
+   "id": "restaurante",
+   "titulo": "No restaurante",
+   "objetivo": "Pedir comida e a conta.",
+   "linhas": [
+    {
+     "q": "Atendente",
+     "t": "いらっしゃいませ。何名様ですか。",
+     "p": "Bem-vindo. Quantas pessoas?"
+    },
+    {
+     "q": "Você",
+     "t": "二人です。",
+     "p": "Duas pessoas."
+    },
+    {
+     "q": "Você",
+     "t": "ラーメンを一つください。",
+     "p": "Um lámen, por favor."
+    },
+    {
+     "q": "Você",
+     "t": "お水もお願いします。",
+     "p": "Água também, por favor."
+    },
+    {
+     "q": "Você",
+     "t": "お会計をお願いします。",
+     "p": "A conta, por favor."
+    }
+   ]
+  },
+  {
+   "id": "caminho",
+   "titulo": "Perguntar o caminho",
+   "objetivo": "Achar a estação.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "すみません、駅はどこですか。",
+     "p": "Com licença, onde fica a estação?"
+    },
+    {
+     "q": "Passante",
+     "t": "まっすぐ行って、右に曲がってください。",
+     "p": "Siga em frente e vire à direita."
+    },
+    {
+     "q": "Você",
+     "t": "遠いですか。",
+     "p": "É longe?"
+    },
+    {
+     "q": "Passante",
+     "t": "いいえ、歩いて五分です。",
+     "p": "Não, são cinco minutos a pé."
+    },
+    {
+     "q": "Você",
+     "t": "ありがとうございます。",
+     "p": "Muito obrigado."
+    }
+   ]
+  },
+  {
+   "id": "compras",
+   "titulo": "Comprar",
+   "objetivo": "Perguntar o preço.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "これはいくらですか。",
+     "p": "Quanto custa isto?"
+    },
+    {
+     "q": "Atendente",
+     "t": "千円です。",
+     "p": "Mil ienes."
+    },
+    {
+     "q": "Você",
+     "t": "少し高いですね。",
+     "p": "É um pouco caro, né."
+    },
+    {
+     "q": "Você",
+     "t": "では、これをください。",
+     "p": "Então vou levar este."
+    }
+   ]
+  },
+  {
+   "id": "transporte",
+   "titulo": "Trem e ônibus",
+   "objetivo": "Horários e destino.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "次の電車は何時ですか。",
+     "p": "A que horas é o próximo trem?"
+    },
+    {
+     "q": "Atendente",
+     "t": "十時十五分です。",
+     "p": "Às 10h15."
+    },
+    {
+     "q": "Você",
+     "t": "このバスは東京駅に行きますか。",
+     "p": "Este ônibus vai à estação de Tóquio?"
+    },
+    {
+     "q": "Atendente",
+     "t": "はい、行きます。",
+     "p": "Sim, vai."
+    }
+   ]
+  }
+ ]
+}

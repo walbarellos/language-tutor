@@ -1,0 +1,118 @@
+{
+ "lang": "es",
+ "situacoes": [
+  {
+   "id": "cafe",
+   "titulo": "Pedir un café",
+   "objetivo": "Pedir y pagar.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Buenos días, un café con leche, por favor.",
+     "p": "Bom dia, um café com leite, por favor."
+    },
+    {
+     "q": "Camarero",
+     "t": "Claro. ¿Algo más?",
+     "p": "Claro. Mais alguma coisa?"
+    },
+    {
+     "q": "Você",
+     "t": "No, nada más. ¿Cuánto es?",
+     "p": "Não, mais nada. Quanto é?"
+    },
+    {
+     "q": "Camarero",
+     "t": "Son dos euros.",
+     "p": "São dois euros."
+    },
+    {
+     "q": "Você",
+     "t": "Aquí tiene. Gracias.",
+     "p": "Aqui está. Obrigado."
+    }
+   ]
+  },
+  {
+   "id": "caminho",
+   "titulo": "Preguntar el camino",
+   "objetivo": "Achar a estação.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Perdone, ¿dónde está la estación?",
+     "p": "Com licença, onde fica a estação?"
+    },
+    {
+     "q": "Peatón",
+     "t": "Siga recto y gire a la derecha.",
+     "p": "Siga em frente e vire à direita."
+    },
+    {
+     "q": "Você",
+     "t": "¿Está lejos?",
+     "p": "Fica longe?"
+    },
+    {
+     "q": "Peatón",
+     "t": "No, está a cinco minutos andando.",
+     "p": "Não, fica a cinco minutos a pé."
+    }
+   ]
+  },
+  {
+   "id": "presentarse",
+   "titulo": "Presentarse",
+   "objetivo": "Dizer quem você é.",
+   "linhas": [
+    {
+     "q": "Ana",
+     "t": "Hola, me llamo Ana. ¿Y tú?",
+     "p": "Oi, me chamo Ana. E você?"
+    },
+    {
+     "q": "Você",
+     "t": "Yo soy Marco, soy de Italia.",
+     "p": "Eu sou Marco, sou da Itália."
+    },
+    {
+     "q": "Ana",
+     "t": "¿Hablas español?",
+     "p": "Você fala espanhol?"
+    },
+    {
+     "q": "Você",
+     "t": "Un poco, todavía estoy aprendiendo.",
+     "p": "Um pouco, ainda estou aprendendo."
+    }
+   ]
+  },
+  {
+   "id": "restaurante",
+   "titulo": "En el restaurante",
+   "objetivo": "Mesa, comida e conta.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Una mesa para dos, por favor.",
+     "p": "Uma mesa para dois, por favor."
+    },
+    {
+     "q": "Camarero",
+     "t": "Claro, síganme. Aquí tienen la carta.",
+     "p": "Claro, me acompanhem. Aqui está o cardápio."
+    },
+    {
+     "q": "Você",
+     "t": "Quisiera la paella y agua, por favor.",
+     "p": "Queria a paella e água, por favor."
+    },
+    {
+     "q": "Você",
+     "t": "La cuenta, por favor.",
+     "p": "A conta, por favor."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,526 @@
+{
+ "lang": "it",
+ "situacoes": [
+  {
+   "id": "cafe",
+   "titulo": "Pedir um café",
+   "objetivo": "Pedir e pagar no bar.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Buongiorno! Un caffè, per favore.",
+     "p": "Bom dia! Um café, por favor."
+    },
+    {
+     "q": "Barista",
+     "t": "Certo. Lo vuole al banco o al tavolo?",
+     "p": "Claro. Quer no balcão ou na mesa?"
+    },
+    {
+     "q": "Você",
+     "t": "Al banco, grazie. Quanto costa?",
+     "p": "No balcão, obrigado. Quanto custa?"
+    },
+    {
+     "q": "Barista",
+     "t": "Un euro e venti.",
+     "p": "Um euro e vinte."
+    },
+    {
+     "q": "Você",
+     "t": "Ecco a lei. Grazie mille!",
+     "p": "Aqui está. Muito obrigado!"
+    }
+   ],
+   "nivel": 1
+  },
+  {
+   "id": "caminho",
+   "titulo": "Perguntar o caminho",
+   "objetivo": "Achar a estação e entender direções.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Scusi, dov’è la stazione?",
+     "p": "Com licença, onde fica a estação?"
+    },
+    {
+     "q": "Passante",
+     "t": "Vada dritto e poi giri a destra.",
+     "p": "Vá em frente e depois vire à direita."
+    },
+    {
+     "q": "Você",
+     "t": "È lontano da qui?",
+     "p": "É longe daqui?"
+    },
+    {
+     "q": "Passante",
+     "t": "No, è a cinque minuti a piedi.",
+     "p": "Não, é a cinco minutos a pé."
+    },
+    {
+     "q": "Você",
+     "t": "Grazie, molto gentile.",
+     "p": "Obrigado, muito gentil."
+    }
+   ],
+   "nivel": 1
+  },
+  {
+   "id": "restaurante",
+   "titulo": "No restaurante",
+   "objetivo": "Pedir mesa, comida e a conta.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Buonasera, un tavolo per due, per favore.",
+     "p": "Boa noite, uma mesa para dois, por favor."
+    },
+    {
+     "q": "Garçom",
+     "t": "Certo, da questa parte. Ecco il menù.",
+     "p": "Claro, por aqui. Aqui está o cardápio."
+    },
+    {
+     "q": "Você",
+     "t": "Vorrei gli spaghetti al pomodoro e dell’acqua.",
+     "p": "Queria o espaguete ao molho de tomate e água."
+    },
+    {
+     "q": "Você",
+     "t": "Il conto, per favore.",
+     "p": "A conta, por favor."
+    }
+   ],
+   "nivel": 1
+  },
+  {
+   "id": "apresentacao",
+   "titulo": "Apresentar-se",
+   "objetivo": "Dizer quem você é e de onde vem.",
+   "linhas": [
+    {
+     "q": "Marco",
+     "t": "Ciao, mi chiamo Marco. E tu?",
+     "p": "Oi, me chamo Marco. E você?"
+    },
+    {
+     "q": "Você",
+     "t": "Io sono Ana e vengo dal Brasile.",
+     "p": "Eu sou Ana e venho do Brasil."
+    },
+    {
+     "q": "Marco",
+     "t": "Parli italiano?",
+     "p": "Você fala italiano?"
+    },
+    {
+     "q": "Você",
+     "t": "Un po’, sto ancora imparando.",
+     "p": "Um pouco, ainda estou aprendendo."
+    },
+    {
+     "q": "Marco",
+     "t": "Piacere di conoscerti!",
+     "p": "Prazer em conhecer você!"
+    }
+   ],
+   "nivel": 1
+  },
+  {
+   "id": "loja",
+   "titulo": "Comprar numa loja",
+   "objetivo": "Perguntar preço e pedir algo mais barato.",
+   "linhas": [
+    {
+     "q": "Atendente",
+     "t": "Buongiorno, posso aiutarla?",
+     "p": "Bom dia, posso ajudá-lo?"
+    },
+    {
+     "q": "Você",
+     "t": "Sì, cerco una maglietta. Quanto costa questa?",
+     "p": "Sim, procuro uma camiseta. Quanto custa esta?"
+    },
+    {
+     "q": "Atendente",
+     "t": "Costa venti euro.",
+     "p": "Custa vinte euros."
+    },
+    {
+     "q": "Você",
+     "t": "È troppo cara. Ha qualcosa di meno costoso?",
+     "p": "É cara demais. Tem algo mais barato?"
+    },
+    {
+     "q": "Atendente",
+     "t": "Certo, guardi queste.",
+     "p": "Claro, veja estas."
+    }
+   ],
+   "nivel": 1
+  },
+  {
+   "id": "ajuda",
+   "titulo": "Pedir ajuda",
+   "objetivo": "Frases essenciais numa emergência.",
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Mi scusi, ho bisogno di aiuto.",
+     "p": "Com licença, preciso de ajuda."
+    },
+    {
+     "q": "Você",
+     "t": "Mi sento male. Può chiamare un medico?",
+     "p": "Estou passando mal. Pode chamar um médico?"
+    },
+    {
+     "q": "Passante",
+     "t": "Subito! Si sieda qui.",
+     "p": "Já! Sente-se aqui."
+    },
+    {
+     "q": "Você",
+     "t": "Dov’è l’ospedale più vicino?",
+     "p": "Onde fica o hospital mais próximo?"
+    }
+   ],
+   "nivel": 1
+  },
+  {
+   "id": "cumprimentos",
+   "titulo": "Cumprimentos do dia",
+   "objetivo": "Dizer olá e se despedir, no formal.",
+   "nivel": 1,
+   "linhas": [
+    {
+     "q": "Marco",
+     "t": "Buongiorno! Come sta?",
+     "p": "Bom dia! Como o senhor está?"
+    },
+    {
+     "q": "Você",
+     "t": "Bene, grazie. E lei?",
+     "p": "Bem, obrigado. E o senhor?"
+    },
+    {
+     "q": "Marco",
+     "t": "Bene anch’io. Arrivederci, a domani!",
+     "p": "Bem também. Até logo, até amanhã!"
+    },
+    {
+     "q": "Você",
+     "t": "A domani! Buona giornata!",
+     "p": "Até amanhã! Tenha um bom dia!"
+    }
+   ]
+  },
+  {
+   "id": "numeros",
+   "titulo": "Números e preços",
+   "objetivo": "Perguntar quanto custa e entender o valor.",
+   "nivel": 1,
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Quanto costa questo libro?",
+     "p": "Quanto custa este livro?"
+    },
+    {
+     "q": "Atendente",
+     "t": "Costa quindici euro e cinquanta.",
+     "p": "Custa quinze euros e cinquenta."
+    },
+    {
+     "q": "Você",
+     "t": "E quello costa dieci euro?",
+     "p": "E aquele custa dez euros?"
+    },
+    {
+     "q": "Atendente",
+     "t": "No, costa dodici euro.",
+     "p": "Não, custa doze euros."
+    },
+    {
+     "q": "Você",
+     "t": "Prendo questo, grazie.",
+     "p": "Vou levar este, obrigado."
+    }
+   ]
+  },
+  {
+   "id": "hotel",
+   "titulo": "No hotel",
+   "objetivo": "Fazer o check-in.",
+   "nivel": 1,
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Buonasera, ho una prenotazione a nome Silva.",
+     "p": "Boa noite, tenho uma reserva em nome de Silva."
+    },
+    {
+     "q": "Recepção",
+     "t": "Un momento… Sì, una camera doppia per tre notti.",
+     "p": "Um momento… Sim, um quarto duplo por três noites."
+    },
+    {
+     "q": "Você",
+     "t": "Perfetto. A che ora è la colazione?",
+     "p": "Perfeito. A que horas é o café da manhã?"
+    },
+    {
+     "q": "Recepção",
+     "t": "Dalle sette alle dieci.",
+     "p": "Das sete às dez."
+    },
+    {
+     "q": "Recepção",
+     "t": "Ecco la chiave. Buona permanenza!",
+     "p": "Aqui está a chave. Boa estadia!"
+    }
+   ]
+  },
+  {
+   "id": "treno",
+   "titulo": "Comprar passagem de trem",
+   "objetivo": "Pedir passagem e horário.",
+   "nivel": 1,
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Un biglietto per Roma, per favore.",
+     "p": "Uma passagem para Roma, por favor."
+    },
+    {
+     "q": "Bilheteria",
+     "t": "Solo andata o andata e ritorno?",
+     "p": "Só ida ou ida e volta?"
+    },
+    {
+     "q": "Você",
+     "t": "Solo andata. A che ora parte il prossimo treno?",
+     "p": "Só ida. A que horas parte o próximo trem?"
+    },
+    {
+     "q": "Bilheteria",
+     "t": "Alle quattordici e trenta, dal binario cinque.",
+     "p": "Às catorze e trinta, da plataforma cinco."
+    }
+   ]
+  },
+  {
+   "id": "farmacia",
+   "titulo": "Na farmácia",
+   "objetivo": "Dizer o que sente e pedir um remédio.",
+   "nivel": 1,
+   "linhas": [
+    {
+     "q": "Você",
+     "t": "Buongiorno, ho mal di testa. Cosa mi consiglia?",
+     "p": "Bom dia, estou com dor de cabeça. O que o senhor recomenda?"
+    },
+    {
+     "q": "Farmacêutico",
+     "t": "Prenda una compressa ogni otto ore.",
+     "p": "Tome um comprimido a cada oito horas."
+    },
+    {
+     "q": "Você",
+     "t": "Ha anche qualcosa per la tosse?",
+     "p": "Tem também algo para a tosse?"
+    },
+    {
+     "q": "Farmacêutico",
+     "t": "Sì, uno sciroppo. Sono dodici euro in tutto.",
+     "p": "Sim, um xarope. São doze euros no total."
+    }
+   ]
+  },
+  {
+   "id": "tempo",
+   "titulo": "Falar do tempo",
+   "objetivo": "Conversa leve sobre o clima.",
+   "nivel": 1,
+   "linhas": [
+    {
+     "q": "Marco",
+     "t": "Che bella giornata oggi!",
+     "p": "Que belo dia hoje!"
+    },
+    {
+     "q": "Você",
+     "t": "Sì, c’è il sole, ma fa un po’ freddo.",
+     "p": "Sim, tem sol, mas faz um pouco de frio."
+    },
+    {
+     "q": "Marco",
+     "t": "Domani invece piove.",
+     "p": "Amanhã, em compensação, vai chover."
+    },
+    {
+     "q": "Você",
+     "t": "Allora porto l’ombrello.",
+     "p": "Então levo o guarda-chuva."
+    }
+   ]
+  },
+  {
+   "id": "famiglia",
+   "titulo": "Falar da família",
+   "objetivo": "Irmãos, pais e onde moram.",
+   "nivel": 1,
+   "linhas": [
+    {
+     "q": "Marco",
+     "t": "Hai fratelli o sorelle?",
+     "p": "Você tem irmãos ou irmãs?"
+    },
+    {
+     "q": "Você",
+     "t": "Ho una sorella e due fratelli.",
+     "p": "Tenho uma irmã e dois irmãos."
+    },
+    {
+     "q": "Marco",
+     "t": "I tuoi genitori abitano qui?",
+     "p": "Seus pais moram aqui? (genitori = pais; parenti = parentes)"
+    },
+    {
+     "q": "Você",
+     "t": "No, abitano in Brasile.",
+     "p": "Não, moram no Brasil."
+    }
+   ]
+  },
+  {
+   "id": "routine",
+   "titulo": "Falar da rotina",
+   "objetivo": "Descrever o seu dia.",
+   "nivel": 2,
+   "linhas": [
+    {
+     "q": "Marco",
+     "t": "Che cosa fai di solito la mattina?",
+     "p": "O que você costuma fazer de manhã?"
+    },
+    {
+     "q": "Você",
+     "t": "Mi sveglio alle sette e faccio colazione.",
+     "p": "Acordo às sete e tomo café da manhã."
+    },
+    {
+     "q": "Você",
+     "t": "Poi vado al lavoro in autobus.",
+     "p": "Depois vou ao trabalho de ônibus."
+    },
+    {
+     "q": "Marco",
+     "t": "E la sera?",
+     "p": "E à noite?"
+    },
+    {
+     "q": "Você",
+     "t": "La sera cucino e studio un po’ d’italiano.",
+     "p": "À noite cozinho e estudo um pouco de italiano."
+    }
+   ]
+  },
+  {
+   "id": "invito",
+   "titulo": "Convidar um amigo",
+   "objetivo": "Aceitar um convite e combinar.",
+   "nivel": 2,
+   "linhas": [
+    {
+     "q": "Marco",
+     "t": "Sabato sera facciamo una cena a casa mia. Vuoi venire?",
+     "p": "Sábado à noite fazemos um jantar na minha casa (cena = jantar). Quer vir?"
+    },
+    {
+     "q": "Você",
+     "t": "Volentieri! Che cosa posso portare?",
+     "p": "Com prazer! O que posso levar?"
+    },
+    {
+     "q": "Marco",
+     "t": "Porta pure un dolce, se vuoi.",
+     "p": "Leve uma sobremesa, se quiser."
+    },
+    {
+     "q": "Você",
+     "t": "Va bene. A che ora?",
+     "p": "Combinado. A que horas?"
+    },
+    {
+     "q": "Marco",
+     "t": "Verso le otto.",
+     "p": "Por volta das oito."
+    }
+   ]
+  },
+  {
+   "id": "opinione",
+   "titulo": "Dar a sua opinião",
+   "objetivo": "Concordar e discordar com educação.",
+   "nivel": 2,
+   "linhas": [
+    {
+     "q": "Marco",
+     "t": "Ti è piaciuto il film?",
+     "p": "Você gostou do filme?"
+    },
+    {
+     "q": "Você",
+     "t": "Sì, molto! Secondo me, la fine è bellissima.",
+     "p": "Sim, muito! Na minha opinião, o final é lindíssimo."
+    },
+    {
+     "q": "Marco",
+     "t": "Io non sono d’accordo: era troppo lungo.",
+     "p": "Eu não concordo: era longo demais."
+    },
+    {
+     "q": "Você",
+     "t": "Capisco, ma a me è piaciuto lo stesso.",
+     "p": "Entendo, mas eu gostei mesmo assim."
+    }
+   ]
+  },
+  {
+   "id": "medico",
+   "titulo": "No médico",
+   "objetivo": "Descrever sintomas.",
+   "nivel": 2,
+   "linhas": [
+    {
+     "q": "Médico",
+     "t": "Buongiorno, che cosa si sente?",
+     "p": "Bom dia, o que o senhor está sentindo?"
+    },
+    {
+     "q": "Você",
+     "t": "Ho la febbre e mi fa male la gola.",
+     "p": "Estou com febre e minha garganta dói."
+    },
+    {
+     "q": "Médico",
+     "t": "Da quanti giorni?",
+     "p": "Há quantos dias?"
+    },
+    {
+     "q": "Você",
+     "t": "Da due giorni.",
+     "p": "Há dois dias."
+    },
+    {
+     "q": "Médico",
+     "t": "Le prescrivo una cura. Riposi e beva molta acqua.",
+     "p": "Vou receitar um tratamento. Descanse e beba bastante água."
+    }
+   ]
+  }
+ ]
+}
