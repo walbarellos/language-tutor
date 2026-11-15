@@ -1,5 +1,5 @@
 // Painel lateral da palavra: significado, frequência, cognatos, Wiktionary e "ouvir de novo".
-import { E } from "./util.js";
+import { E, lab } from "./util.js";
 import { app } from "./state.js";
 import { saveBtn } from "./srs.js";
 import { wiki, cog, fill } from "./dictionary.js";
@@ -19,6 +19,6 @@ export function showWord(seg, t, i) {
     const box = E("div", "Buscando no Wiktionary…", "wk"); p.append(box);
     wiki(t.text, seg.lang).then(r => fill(box, r)).catch(() => { box.textContent = "Wiktionary indisponível agora (precisa de internet na primeira consulta)."; });
   }
-  const again = E("button", "🔊 Ouvir de novo", "b"); again.onclick = () => app.player.playWord(i, t); p.append(again);
+  const again = E("button", "", "b"); lab(again, "spk", "Ouvir de novo"); again.onclick = () => app.player.playWord(i, t); p.append(again);
   app.player.playWord(i, t);   // toca a palavra e devolve ao fluxo: a frase ativa passa a ser esta
 }

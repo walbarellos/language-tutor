@@ -39,11 +39,12 @@ export class Trainer {
       }
       this.view.step("normal");   if ((await player.once(n, { rate: player.speed })) === "cancelled" || !alive()) return false;
       if (!this.mic) {                                                  // R2: pausa do tamanho da frase e segue
-        this.view.step("gap");    await this._nap(player.audio.durationMs / player.speed * cfg.gapFactor); return alive();
+        const ms = player.audio.durationMs / player.speed * cfg.gapFactor;
+        this.view.step("gap", { ms }); await this._nap(ms); return alive();
       }
       this.view.step("speak");
       let rec;
-      try { rec = await this.recorder.record({ vad: true, maxMs: player.audio.durationMs * 2 + 4000 }); }
+      try { rec = await this.recorder.record({ vad: true, maxMs: player.audio.durationMs * 2 + 4000, lang: seg?.lang || "it" }); }
       catch { this.mic = false; continue; }
       if (!alive()) return false;
       if (rec.reason === "stop-nospeech") { this.view.step("silent"); await this._nap(700); if (!alive()) return false; continue; }

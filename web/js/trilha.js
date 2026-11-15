@@ -1,5 +1,5 @@
 // Trilha por situação: cenas curtas do dia a dia, em frases completas. Dados em trilhas/<idioma>.json (tradução revisada à mão).
-import { $, E, norm, warn } from "./util.js";
+import { $, E, norm, warn, lab, ic } from "./util.js";
 import { api } from "./api.js";
 import { app } from "./state.js";
 import { STUDYL } from "./languages.js";
@@ -23,7 +23,7 @@ export async function openTrail() {
     let ult = 0;
     j.situacoes.forEach(s => {
       if (s.nivel && s.nivel !== ult) { ult = s.nivel; box.append(E("h3", "Nível " + s.nivel + (s.nivel === 1 ? " · sobrevivência" : s.nivel === 2 ? " · conversa" : ""))); }
-      const b = E("button", ((app.prog[app.study] || {})[s.id] ? "✓ " : "") + s.titulo, "b"); b.style.cssText = "display:block;width:100%;text-align:left;margin:6px 0";
+      const b = E("button", "", "b"); if ((app.prog[app.study] || {})[s.id]) b.insertAdjacentHTML("afterbegin", ic("done")); b.append(s.titulo); b.style.cssText = "display:block;width:100%;text-align:left;margin:6px 0";
       const sm = E("small", s.objetivo + " · " + s.linhas.length + " frases"); sm.style.display = "block"; b.append(sm);
       b.onclick = () => { $("#dTrl").close(); loadSit(s); }; box.append(b);
     });
@@ -36,12 +36,12 @@ export async function loadSit(s) {
   const d = await sitPipeline().run({ segs: s.linhas.map(l => ({ text: l.t, lang: app.study, tr: l.p, who: l.q })) });
   setSegs(d.segs);
   const b = E("div", "", "sitb"); b.append(E("h2", app.sit.titulo), E("p", app.sit.objetivo + " Ative “Tradução” para ver o português."));
-  const k = E("button", "★ Guardar todas as frases", "b");
+  const k = E("button", "", "b"); lab(k, "star", "Guardar todas as frases");
   k.onclick = () => {
     const novos = app.segs.map(g => ({ id: "frase|" + g.lang + "|" + norm(g.text), lang: g.lang, word: g.text, lemma: "", gloss: g.tr || "", era: "", sentence: g.text, start: 0, due: Date.now(), interval: 0, ease: 2.5, reps: 0 })).filter(c => !hasCard(c.id));
-    addCards(novos); k.textContent = "★ " + novos.length + " frases guardadas";
+    addCards(novos); lab(k, "done", novos.length + " frases guardadas");
   };
-  const tr = E("button", "🎯 Treinar esta situação", "b"); tr.onclick = () => app.trainer.start(0);
+  const tr = E("button", "", "b"); lab(tr, "target", "Treinar esta situação"); tr.onclick = () => app.trainer.start(0);
   const nx = E("button", "Outras situações", "b"); nx.onclick = openTrail;
   b.append(k, " ", tr, " ", nx); $("#page").prepend(b);
 }

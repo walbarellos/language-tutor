@@ -45,8 +45,8 @@ test("o app sobe: 2 frases na tela e a primeira já é a frase ativa", () => {
 });
 
 test("▶ toca a frase ativa e avança sozinho até a última; ícone volta a ▶", async () => {
-  click($("#bPlay")); await until(() => $("#bPlay").textContent === "⏸");
-  await until(() => $("#bPlay").textContent === "▶", 4000);
+  click($("#bPlay")); await until(() => $("#bPlay").dataset.playing === "true");
+  await until(() => $("#bPlay").dataset.playing === "false", 4000);
   assert.ok(req.filter(r => r[0] === "/tts").length >= 2);
 });
 

@@ -19,7 +19,11 @@ export class Player {
   select(i, { scroll = false } = {}) { this.i = Math.max(0, Math.min(this.segs.length - 1, i)); this.view.select(this.i, { scroll }); }
   setSpeed(s) { this.speed = s; this.audio.setRate(s); }
   get busy() { return this.audio.active || this.waiting || this.loading; }
-  _ui() { this.view.playing(this.busy && !this.audio.paused); }
+  _ui() {
+    this.view.playing(this.busy && !this.audio.paused);
+    const st = this.waiting ? "gap" : this.loading ? "load" : this.audio.active ? (this.audio.paused ? "pause" : "play") : "idle";
+    this.view.status?.(st, st === "gap" ? { ms: this.audio.durationMs / this.speed } : {});   // painel ao vivo (opcional)
+  }
 
   async clipFor(seg) {
     const voice = this.voiceFor(seg.lang), key = clipKey(seg.text, voice);
@@ -60,6 +64,7 @@ export class Player {
   _tick(seg, t) {
     let k = -1; seg.tokens.forEach((x, n) => { if (x.t0 !== undefined && x.t0 <= t) k = n; });
     if (k !== this.k) { this.k = k; this.view.mark(seg, k); }
+    this.view.progress?.(t, this.audio.durationMs);
   }
 
   // Toca uma vez e devolve só o resultado (usado pelo Trainer).

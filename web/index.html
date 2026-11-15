@@ -7,20 +7,26 @@
 <link rel="stylesheet" href="/css/app.css">
 </head>
 <body data-m="hop" data-freq="on" data-read="furi">
-<header><h1>Laboratório da língua</h1><button class="b" id="bTrl">Trilha</button><button class="b" id="bRev">Revisar (0)</button><button class="b" id="bImp">Texto</button><button class="b" id="bSet" aria-label="Configurações">⚙</button></header>
+<header>
+<h1>Laboratório da língua</h1>
+<div id="stkBadge" class="stk-badge" title="Sequência de acertos e XP acumulado" data-active="false"><span class="stk-fire">⚡</span> <b id="stkNum">0x</b> combo <span class="stk-xp" id="xpNum">+0 XP</span></div>
+<button class="b" id="bTrl" data-i="route"><span>Trilha</span></button><button class="b" id="bRev" data-i="star"><span>Revisar (0)</span></button><button class="b" id="bImp" data-i="text"><span>Texto</span></button><button class="b" id="bSet" data-i="sliders" aria-label="Configurações"></button>
+</header>
 <main><div id="page" aria-live="off"></div><aside id="pw" aria-live="polite"></aside></main>
 <footer role="toolbar" aria-label="Controles de leitura">
-<div id="coach" role="status" aria-live="polite" hidden></div>
-<button class="b" id="bPrev" aria-label="Frase anterior">‹</button>
-<button class="b" id="bPlay" aria-label="Tocar ou pausar">▶</button>
-<button class="b" id="bNext" aria-label="Próxima frase">›</button>
+<div id="dock" aria-hidden="true" hidden></div>
+<ol id="steps" aria-hidden="true" hidden><li data-k="0" data-i="ear"><span>Ouvir</span></li><li data-k="1" data-i="mic"><span>Falar</span></li><li data-k="2" data-i="done"><span>Nota</span></li></ol>
+<div id="coach" role="status" aria-live="polite" hidden><span class="c-ico"></span><span class="c-txt"></span></div>
+<button class="b" id="bPrev" aria-label="Frase anterior"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="b" id="bPlay" aria-label="Tocar" data-playing="false" data-i="play"></button>
+<button class="b" id="bNext" aria-label="Próxima frase"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
 <label>Velocidade <select class="b" id="sp"><option>0.5</option><option>0.75</option><option selected>1</option><option>1.25</option><option>1.5</option></select></label>
 <button class="b" id="bLoop" aria-pressed="false">Repetir</button>
 <button class="b" id="bTr" aria-pressed="false">Tradução</button>
 <button class="b" id="bFq" aria-pressed="true">Frequência</button>
 <button class="b" id="bRd" hidden>Leitura: furigana</button>
-<button class="b" id="bTrain" aria-pressed="false" title="Atalho: T">🎯 Treino</button>
-<button class="b" id="bRec" aria-pressed="false">🎙 Gravar</button>
+<button class="b" id="bTrain" aria-pressed="false" title="Atalho: T" data-i="target"><span>Treino</span></button>
+<button class="b" id="bRec" aria-pressed="false" title="Atalho: G" data-i="mic"><span>Gravar</span></button>
 <button class="b" id="bEar" aria-pressed="false">Só ouvir</button>
 <button class="b" id="bGap" aria-pressed="false">Pausa p/ repetir</button>
 </footer>

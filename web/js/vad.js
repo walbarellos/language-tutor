@@ -5,6 +5,7 @@ export class Vad {
     Object.assign(this, { thr, silenceMs, noSpeechMs, maxMs, minHits });
     this.t0 = null; this.hits = 0; this.speech = false; this.lastVoice = 0;
   }
+  progress(now) { return this.speech ? Math.min(1, (now - this.lastVoice) / this.silenceMs) : 0; }   // 0..1: quanto falta para encerrar
   push(rms, now) {
     if (this.t0 === null) this.t0 = now;
     if (rms > this.thr) { this.hits++; if (this.hits >= this.minHits) { this.speech = true; this.lastVoice = now; } }   // 2 amostras seguidas: ignora estalo isolado

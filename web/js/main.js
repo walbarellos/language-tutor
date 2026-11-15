@@ -1,5 +1,6 @@
 // Ponto de entrada: monta os módulos e liga os botões. Nenhuma regra de negócio aqui.
-import { $, warn } from "./util.js";
+import { $, warn, ic, hydrate } from "./util.js";
+import { dock } from "./dock.js";
 import { app } from "./state.js";
 import { AudioController } from "./audio.js";
 import { Player } from "./player.js";
@@ -14,33 +15,44 @@ import { openTrail, markHeard } from "./trilha.js";
 import { api } from "./api.js";
 import { getVad, setVad } from "./settings.js";
 
-const DEFAULT = `Nasce da questo una disputa: s’egli è melhor essere amato que temuto, o e converso.
-Rispondo che si vorrebbe essere l’uno e l’altro; ma porque egli è difficile accozzarli insieme, è muito mais seguro essere temuto che amato, quando si abbia a mancare dell’uno de’ dua.`;
+const DEFAULT = `Nasce da questo una disputa: s’egli è meglio essere amato che temuto, o e converso.
+Rispondo che si vorrebbe essere l’uno e l’altro; ma perché egli è difficile accozzarli insieme, è muito mais seguro essere temuto che amato, quando si abbia a mancare dell’uno de’ dua.`;
 
 // ---------- montagem ----------
 const audio = new AudioController();
 const player = new Player({ audio, view, voiceFor: l => LANGS[l].voice, onHeard: markHeard });
 const recorder = new Recorder({ vadCfg: getVad });   // lido a cada gravação: mexer nos controles vale já na próxima frase
+recorder.onLevel = l => dock.level(l);                 // medidor ao vivo (painel)
+recorder.onInterim = text => dock.live(text);          // texto ao vivo enquanto você fala
 
-// Faixa do Modo Treino: diz em que passo você está.
-const coach = $("#coach"); let pos = "";
+// Faixa do Modo Treino: passos (Ouvir, Falar, Nota) + o que fazer agora. O painel ao vivo (dock) mostra o medidor.
+const coach = $("#coach"), steps = $("#steps"); let pos = "";
 const MSG = {
-  slow: "👂 Ouça devagar", normal: "👂 Ouça", speak: "🎙 Sua vez: fale a frase", analyze: "⏳ Analisando…",
-  silent: "Não ouvi nada. Vamos de novo.", gap: "🗣 Repita em voz alta", nomic: "Sem microfone: modo ouvir e repetir",
-  done: "🎉 Treino concluído", stopped: "Treino parado",
+  slow: "Ouça devagar", normal: "Ouça", speak: "Sua vez: fale a frase", analyze: "Analisando…",
+  silent: "Não ouvi nada. Vamos de novo.", gap: "Repita em voz alta", nomic: "Sem microfone: modo ouvir e repetir",
+  done: "Treino concluído", stopped: "Treino parado",
 };
+const ICO = { slow: "ear", normal: "ear", speak: "mic", gap: "mic", analyze: "clock", silent: "mic", done: "done", stopped: "stop", nomic: "mic" };
+const STEP = { slow: 0, normal: 0, speak: 1, gap: 1, silent: 1, analyze: 2, result: 2 };   // qual passo acende
+const DOCK = { slow: "slow", normal: "play", speak: "wait", analyze: "analyze", silent: "silent", gap: "gap" };
+const say = (ico, txt) => { coach.hidden = false; $(".c-ico", coach).innerHTML = ic(ico); $(".c-txt", coach).textContent = txt; };
 const trainView = {
-  on(b) { $("#bTrain").setAttribute("aria-pressed", b); coach.hidden = !b && !coach.textContent; },
+  on(b) {
+    $("#bTrain").setAttribute("aria-pressed", b); dock.locked = b; steps.hidden = !b;
+    if (b) steps.querySelectorAll("li").forEach(li => li.className = ""); else dock.hide();
+    coach.hidden = !b && !$(".c-txt", coach).textContent;
+  },
   step(name, info = {}) {
-    if (name === "sentence") { pos = "Frase " + (info.n + 1) + "/" + info.total + " · "; return; }
-    coach.hidden = false;
-    coach.textContent = name === "result"
-      ? pos + (info.pct === null ? "Não deu para avaliar" : "Acerto " + info.pct + "% " + (info.pass ? "✓" : "↻ de novo"))
-      : (["done", "stopped", "nomic"].includes(name) ? "" : pos) + MSG[name];
+    if (name === "sentence") { pos = "Frase " + (info.n + 1) + "/" + info.total + " · "; steps.querySelectorAll("li").forEach(li => li.className = ""); return; }
+    if (name in STEP) steps.querySelectorAll("li").forEach((li, k) => { li.className = k < STEP[name] ? "done" : k === STEP[name] ? "now" : ""; });
+    if (DOCK[name]) dock.set(DOCK[name], info); else dock.hide();
+    if (name === "result") say(info.pass ? "check" : "redo", pos + (info.pct === null ? "Não deu para avaliar" : "Acerto " + info.pct + "% · " + (info.pass ? "aprovado" : "de novo")));
+    else say(ICO[name], ([ "done", "stopped", "nomic" ].includes(name) ? "" : pos) + MSG[name]);
   },
 };
 const trainer = new Trainer({ player, recorder, score: analyze, view: trainView });
 Object.assign(app, { audio, player, recorder, trainer });
+hydrate();
 followScroll(player);
 initSrs(); initRecButton();
 api.progress().then(j => { app.prog = j.progress || {}; }).catch(() => {});

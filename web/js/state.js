@@ -5,5 +5,7 @@ export const app = {
   sit: null,       // situação (trilha) aberta, ou null
   tr: false,       // tradução ligada?
   prog: {},        // progresso das trilhas
+  streak: 0,       // acertos consecutivos (combo)
+  xp: 0,           // pontos de experiência da sessão
   player: null, audio: null, trainer: null, recorder: null,
 };

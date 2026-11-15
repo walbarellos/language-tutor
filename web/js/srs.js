@@ -1,5 +1,5 @@
 // Cartões guardados + revisão espaçada. Scheduler é o contrato; SM2 é a 1ª implementação (FSRS entra depois como outra subclasse).
-import { $, E, norm, warn } from "./util.js";
+import { $, E, norm, warn, lab } from "./util.js";
 import { api } from "./api.js";
 import { app } from "./state.js";
 
@@ -16,14 +16,14 @@ const SCH = new SM2();
 export let CARDS = [];
 let Q = [], RV = false;
 export const dueList = () => CARDS.filter(c => c.due <= Date.now()).sort((a, b) => a.due - b.due);
-export const count = () => { $("#bRev").textContent = "Revisar (" + dueList().length + ")"; };
+export const count = () => { $("#bRev span").textContent = "Revisar (" + dueList().length + ")"; };
 export const saveCards = () => api.saveCards(CARDS).catch(warn);
 export const addCards = list => { CARDS.push(...list); saveCards(); count(); };
 export const hasCard = id => CARDS.some(c => c.id === id);
 
 export function saveBtn(seg, t) {
   const id = seg.lang + "|" + norm(t.text), b = E("button", "", "b"), on = () => hasCard(id);
-  const paint = () => { b.textContent = on() ? "★ Guardada" : "☆ Guardar para revisar"; b.setAttribute("aria-pressed", on()); };
+  const paint = () => { lab(b, "star", on() ? "Guardada" : "Guardar para revisar"); b.setAttribute("aria-pressed", on()); };
   b.onclick = () => {
     if (on()) { CARDS = CARDS.filter(c => c.id !== id); saveCards(); count(); }
     else addCards([{ id, lang: seg.lang, word: t.text, lemma: t.lemma || (t.kanji ? t.hira : ""), gloss: t.gloss || "", era: t.era || "", sentence: seg.text, start: t.start, due: Date.now(), interval: 0, ease: 2.5, reps: 0 }]);
@@ -39,7 +39,7 @@ function rvShow(back) {
   if (!Q.length) { r.append(E("p", "Nada para revisar agora. Guarde palavras clicando nelas no texto.")); const x = E("button", "Exportar para o Anki (.tsv)", "b"); x.onclick = exportTsv; r.append(x); return; }
   const c = Q[0]; r.append(E("p", Q.length + " para revisar", "tag"));
   const p = E("p", "", "sent"); p.append(c.sentence.slice(0, c.start), E("mark", c.word), c.sentence.slice(c.start + c.word.length)); r.append(p);
-  const h = E("button", "🔊 Ouvir a frase", "b"); h.onclick = () => app.player.speak(c.sentence, c.lang); r.append(h);
+  const h = E("button", "", "b"); lab(h, "spk", "Ouvir a frase"); h.onclick = () => app.player.speak(c.sentence, c.lang); r.append(h);
   if (!back) { const m = E("button", "Mostrar resposta", "b"); m.onclick = () => rvShow(true); m.autofocus = true; r.append(" ", m); return; }
   r.append(E("h2", c.lemma || c.word)); if (c.era) r.append(E("span", c.era, "era")); r.append(E("p", c.gloss || "Sem sentido salvo: veja o dicionário no painel da palavra."));
   const g = E("div", "", "grades");
