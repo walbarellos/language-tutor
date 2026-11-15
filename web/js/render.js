@@ -35,7 +35,9 @@ export function renderSegs(segs, { onSeg, onWord, onReveal }) {
       }
     });
     if (pos < s.text.length) el.append(s.text.slice(pos));
-    const tr = E("div", s.tr || "", "tr"); s.trEl = tr; if (s.lang !== "pt") el.append(tr);
+    const tr = E("div", s.tr || "", "tr");
+    if (s.nuance) tr.append(E("div", "🔍 " + s.nuance, "nuance"));
+    s.trEl = tr; if (s.lang !== "pt") el.append(tr);
     el.onclick = () => onSeg(i);
     pg.append(el);
   });

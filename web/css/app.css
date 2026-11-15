@@ -42,6 +42,8 @@ textarea{min-height:240px}
 rt{font:.5em/1.2 system-ui,sans-serif;color:var(--mut)}
 dialog{max-height:85vh;overflow:auto}
 .sitb{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:12px;background:var(--card)}.sitb h2{margin:0;font:1.3rem Georgia,serif}.sitb p{margin:.3em 0 .6em;color:var(--mut)}
+.sit-note{margin:8px 0;padding:8px 12px;background:color-mix(in srgb,var(--acc) 10%,var(--card));border-left:3px solid var(--acc);border-radius:6px;font-size:.88rem;line-height:1.45;color:var(--fg)}
+.nuance{font-size:.82rem;color:var(--mut);margin-top:3px;font-style:italic}
 .w.sh-ok{text-decoration:underline solid #2e9d57 3px;text-underline-offset:5px}.w.sh-mid{text-decoration:underline dashed #d9a21b 3px;text-underline-offset:5px}.w.sh-bad{text-decoration:underline wavy #e5484d 3px;text-underline-offset:5px}
 .sh{font:.9rem system-ui,sans-serif;color:var(--mut);margin-top:8px;cursor:default}.sh .b{min-height:36px;padding:4px 12px}.seg[lang=ja]{line-height:2.6}
 #rv .sent{font:1.4rem/1.8 Georgia,serif}mark{background:color-mix(in srgb,var(--acc) 35%,transparent);color:inherit;border-radius:4px;padding:0 2px}.grades{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.grades .b{flex:1;min-width:90px}.grades small{display:block;color:var(--mut)}

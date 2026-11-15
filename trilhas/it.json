@@ -1,526 +1,700 @@
 {
- "lang": "it",
- "situacoes": [
-  {
-   "id": "cafe",
-   "titulo": "Pedir um café",
-   "objetivo": "Pedir e pagar no bar.",
-   "linhas": [
+  "lang": "it",
+  "situacoes": [
     {
-     "q": "Você",
-     "t": "Buongiorno! Un caffè, per favore.",
-     "p": "Bom dia! Um café, por favor."
+      "id": "cafe",
+      "nivel": 1,
+      "titulo": "Pedir um café no balcão",
+      "objetivo": "Pedir, especificar e pagar no bar italiano.",
+      "registro": "casual_educado",
+      "cultural_note": "Na Itália, tomar café no balcão (al banco) é mais rápido e bem mais barato do que sentar à mesa (al tavolo).",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Buongiorno! Un caffè macchiato caldo, per favore.",
+          "p": "Bom dia! Um espresso com uma gota de leite quente, por favor.",
+          "nuance": "'Macchiato caldo' especifica que o pingo de leite deve ser quente (senão pode vir frio)."
+        },
+        {
+          "q": "Barista",
+          "t": "Certo! Lo prende al banco o si accomoda al tavolo?",
+          "p": "Claro! Toma no balcão ou vai se acomodar à mesa?"
+        },
+        {
+          "q": "Você",
+          "t": "Al banco, grazie. Ha anche un cornetto alla crema?",
+          "p": "No balcão, obrigado. Tem também um croissant recheado de creme?",
+          "nuance": "Na Itália central/sul chama-se 'cornetto'; no norte às vezes chamam de 'brioche'."
+        },
+        {
+          "q": "Barista",
+          "t": "Eccoli qui. Sono due euro e cinquanta in tutto.",
+          "p": "Aqui estão. São dois euros e cinquenta no total."
+        },
+        {
+          "q": "Você",
+          "t": "Posso pagare con la carta contactless?",
+          "p": "Posso pagar por aproximação no cartão?"
+        },
+        {
+          "q": "Barista",
+          "t": "Certamente, appoggi pure qui sopra.",
+          "p": "Com certeza, pode encostar aqui em cima."
+        }
+      ]
     },
     {
-     "q": "Barista",
-     "t": "Certo. Lo vuole al banco o al tavolo?",
-     "p": "Claro. Quer no balcão ou na mesa?"
+      "id": "caminho",
+      "nivel": 1,
+      "titulo": "Perguntar direções na rua",
+      "objetivo": "Orientar-se a pé em um centro histórico.",
+      "registro": "formal_cortes",
+      "cultural_note": "Ao abordar alguém na rua na Itália, sempre comece com 'Mi scusi' (formal) em vez de ir direto à pergunta.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Mi scusi, per andare a Piazza Navona da che parte devo andare?",
+          "p": "Com licença, para ir até a Piazza Navona por qual lado devo ir?"
+        },
+        {
+          "q": "Passante",
+          "t": "Vada sempre dritto fino al semaforo, poi giri a destra.",
+          "p": "Vá sempre reto até o semáforo, depois vire à direita.",
+          "nuance": "'Sempre dritto' significa em linha reta; não confunda 'destra' (direita) com 'dritto' (reto)!"
+        },
+        {
+          "q": "Você",
+          "t": "È molto lontano a piedi o mi conviene prendere il bus?",
+          "p": "É muito longe a pé ou me convém pegar o ônibus?"
+        },
+        {
+          "q": "Passante",
+          "t": "No, sono cinque minuti di cammino, ci arriva subito.",
+          "p": "Não, são cinco minutos de caminhada, você chega logo."
+        },
+        {
+          "q": "Você",
+          "t": "Gentilissimo, grazie mille e buona giornata!",
+          "p": "Muito gentil da sua parte, muitíssimo obrigado e tenha um bom dia!"
+        }
+      ]
     },
     {
-     "q": "Você",
-     "t": "Al banco, grazie. Quanto costa?",
-     "p": "No balcão, obrigado. Quanto custa?"
+      "id": "conta_errada",
+      "nivel": 1,
+      "titulo": "Cobrança indevida no restaurante",
+      "objetivo": "Contestar um erro na conta com firmeza e elegância.",
+      "registro": "firme_polido",
+      "cultural_note": "O 'coperto' (taxa de mesa/pão) é padrão na Itália, mas pratos não consumidos devem ser contestados com calma.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Scusi, mi sa che c'è una svista nel conto.",
+          "p": "Com licença, acho que houve um engano na conta.",
+          "nuance": "'Mi sa che' é o jeito mais natural de dizer 'acho que / me parece que'. 'Svista' soa mais educado que 'errore'."
+        },
+        {
+          "q": "Garçom",
+          "t": "Mi dica pure, cosa non le torna?",
+          "p": "Pode falar, o que não está batendo?",
+          "nuance": "'Non le torna' é a expressão coloquial exata para contas ou números que não batem."
+        },
+        {
+          "q": "Você",
+          "t": "Ci sono due calici di vino che noi non abbiamo mai ordinato.",
+          "p": "Constam duas taças de vinho que nós nunca pedimos."
+        },
+        {
+          "q": "Garçom",
+          "t": "Ha ragione, ho scambiado il vostro tavolo col numero sette. Ristampo subito!",
+          "p": "Tem razão, confundi a mesa de vocês com a número sete. Reemprimo agora mesmo!"
+        },
+        {
+          "q": "Você",
+          "t": "Perfetto, nessun problema, capita. Grazie.",
+          "p": "Perfeito, sem problemas, acontece. Obrigado."
+        }
+      ]
     },
     {
-     "q": "Barista",
-     "t": "Un euro e venti.",
-     "p": "Um euro e vinte."
+      "id": "treno_ritardo",
+      "nivel": 1,
+      "titulo": "Trem atrasado e conexão perdida",
+      "objetivo": "Resolver perda de conexão na estação de trem.",
+      "registro": "utilitario_estresse",
+      "cultural_note": "Na Trenitalia e Italo, se o atraso causar perda de conexão, a bilheteria deve revalidar sua passagem no próximo trem sem custo.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Buonasera. Il treno da Milano è arrivato con cinquanta minuti di ritardo.",
+          "p": "Boa noite. O trem de Milão chegou com cinquenta minutos de atraso."
+        },
+        {
+          "q": "Atendente",
+          "t": "Purtroppo c'è stato un guasto alla linea elettrica.",
+          "p": "Infelizmente houve uma pane na rede elétrica."
+        },
+        {
+          "q": "Você",
+          "t": "Ho perso la coincidenza per Firenze. Come posso fare adesso?",
+          "p": "Perdi a conexão para Florença. O que posso fazer agora?",
+          "nuance": "'Coincidenza' em italiano significa conexão de transporte (trem, voo)."
+        },
+        {
+          "q": "Atendente",
+          "t": "Le cambio subito il biglietto per il prossimo regionale delle venti e quindici.",
+          "p": "Troco sua passagem imediatamente para o próximo regional das vinte e quinze."
+        },
+        {
+          "q": "Você",
+          "t": "Devo pagare qualche supplemento o obliterare di nuovo?",
+          "p": "Preciso pagar algum suplemento ou validar de novo no leitor?",
+          "nuance": "'Obliterare' é validar o bilhete nas maquininhas antes de embarcar, obrigatório nos trens regionais."
+        },
+        {
+          "q": "Atendente",
+          "t": "No, il cambio è gratuito e il biglietto è già convalidato. Buon viaggio!",
+          "p": "Não, a troca é gratuita e o bilhete já está validado. Boa viagem!"
+        }
+      ]
     },
     {
-     "q": "Você",
-     "t": "Ecco a lei. Grazie mille!",
-     "p": "Aqui está. Muito obrigado!"
+      "id": "farmacia_sintomi",
+      "nivel": 1,
+      "titulo": "Farmácia: descrever sintomas específicos",
+      "objetivo": "Explicar desconforto físico e comprar medicamento sem receita.",
+      "registro": "pragmatico_saude",
+      "cultural_note": "Farmácias italianas têm cruzes verdes iluminadas na fachada e os farmacêuticos costumam dar orientação clínica rápida para sintomas leves.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Buongiorno. Da ieri sera ho un bruciore di stomaco tremendo e una nausea continua.",
+          "p": "Bom dia. Desde ontem à noite estou com uma azia terrível e um enjoo contínuo.",
+          "nuance": "'Bruciore di stomaco' é a expressão nativa para azia ou queimação estomacal."
+        },
+        {
+          "q": "Farmacêutico",
+          "t": "Ha mangiato qualcosa di pesante o ha anche febbre?",
+          "p": "Comeu algo pesado ou está com febre também?"
+        },
+        {
+          "q": "Você",
+          "t": "Niente febbre, solo acidità dopo i pasti e un po' di mal di testa.",
+          "p": "Nada de febre, só acidez depois das refeições e um pouco de dor de cabeça."
+        },
+        {
+          "q": "Farmacêutico",
+          "t": "Le consiglio questo antiacido masticabile. Ne prenda una compressa dopo mangiato.",
+          "p": "Recomendo este antiácido mastigável. Tome um comprimido depois de comer."
+        },
+        {
+          "q": "Você",
+          "t": "Serve la ricetta medica per questo o è da banco?",
+          "p": "Precisa de receita médica para este ou é de venda livre?",
+          "nuance": "'Farmaco da banco' é o remédio vendido sem prescrição médica."
+        },
+        {
+          "q": "Farmacêutico",
+          "t": "È un farmaco da banco, non serve ricetta. Sono nove euro e ottanta.",
+          "p": "É de venda livre, não precisa de receita. São nove euros e oitenta."
+        }
+      ]
+    },
+    {
+      "id": "hotel_reclamo",
+      "nivel": 1,
+      "titulo": "Reclamação de quarto no hotel",
+      "objetivo": "Solicitar troca de acomodação por barulho ou defeito.",
+      "registro": "formal_assertivo",
+      "cultural_note": "Em hotéis europeus centrais, quartos voltados para a rua podem ser muito barulhentos; pedir um quarto 'che dà sulla corte interna' garante silêncio.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Buonasera. Purtroppo nella camera trecento due l'aria condizionata non funziona affatto.",
+          "p": "Boa noite. Infelizmente no quarto trezentos e dois o ar-condicionado não funciona de jeito nenhum.",
+          "nuance": "'Non funziona affatto' = não funciona de maneira alguma."
+        },
+        {
+          "q": "Recepcionista",
+          "t": "Ha provato a impostarla col telecomando a parete?",
+          "p": "Tentou configurá-lo pelo controle na parede?"
+        },
+        {
+          "q": "Você",
+          "t": "Sì, emette solo aria calda e inoltre la finestra non chiude bene, c'è troppo rumore dalla strada.",
+          "p": "Sim, só sopra ar quente e além disso a janela não fecha direito, há muito barulho da rua."
+        },
+        {
+          "q": "Recepcionista",
+          "t": "Capisco il disagio. Controllo subito se abbiamo una camera libera sul retro.",
+          "p": "Entendo o transtorno. Vou checar agora se temos um quarto livre nos fundos."
+        },
+        {
+          "q": "Você",
+          "t": "Glene sarei molto grato, ho bisogno di riposare per lavoro domani.",
+          "p": "Ficaria muito grato, preciso descansar para o trabalho amanhã."
+        },
+        {
+          "q": "Recepcionista",
+          "t": "Ecco la nuova chiave, quarto piano, silenziosissima. Le faccio portare i bagagli.",
+          "p": "Aqui está a nova chave, quarto andar, super silenciosa. Vou mandar levarem suas malas."
+        }
+      ]
+    },
+    {
+      "id": "supermercato",
+      "nivel": 1,
+      "titulo": "No supermercado italiano",
+      "objetivo": "Comprar alimentos seguindo as regras locais de higiene.",
+      "registro": "cotidiano",
+      "cultural_note": "Na Itália é terminantemente proibido tocar frutas ou verduras com as mãos nuas: você DEVE vestir a luva plástica descartável (guanto) antes de escolher.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Scusi, dove trovo i sacchetti e i guanti per la frutta?",
+          "p": "Com licença, onde encontro os saquinhos e as luvas para as frutas?"
+        },
+        {
+          "q": "Funcionário",
+          "t": "Sono proprio lì accanto alle bilance, sulla colonnina verde.",
+          "p": "Ficam bem ali ao lado das balanças, na coluna verde."
+        },
+        {
+          "q": "Você",
+          "t": "Ah grazie! Devo pesare io la merce e attaccare l'etichetta col prezzo?",
+          "p": "Ah obrigado! Eu mesmo devo pesar a mercadoria e colar a etiqueta com o preço?"
+        },
+        {
+          "q": "Funcionário",
+          "t": "Esatto, prema il tasto col numero corrispondente alle mele.",
+          "p": "Exato, aperte o botão com o número correspondente às maçãs."
+        },
+        {
+          "q": "Você",
+          "t": "Alla cassa accettate i buoni pasto o solo contanti e bancomat?",
+          "p": "No caixa aceitam vale-refeição ou só dinheiro vivo e cartão de débito?",
+          "nuance": "'Bancomat' é o termo onipresente na Itália para cartão de débito."
+        },
+        {
+          "q": "Funcionário",
+          "t": "Accettiamo tutto. Le serve una busta per la spesa?",
+          "p": "Aceitamos tudo. Precisa de uma sacola para as compras?",
+          "nuance": "'Busta' ou 'sacchetto' = sacola plástica/biodegradável paga à parte."
+        }
+      ]
+    },
+    {
+      "id": "ristorante_cena",
+      "nivel": 1,
+      "titulo": "Jantar completo no restaurante",
+      "objetivo": "Pedir sequência clássica italiana: primo, secondo e contorno.",
+      "registro": "gastronomico_nativo",
+      "cultural_note": "A refeição tradicional divide-se em Antipasto (entrada), Primo (massa/risoto), Secondo (carne/peixe) e Contorno (legumes/salada). Não é obrigatório pedir tudo!",
+      "linhas": [
+        {
+          "q": "Garçom",
+          "t": "Buonasera! Avete già dato un'occhiata al menù del giorno?",
+          "p": "Boa noite! Já deram uma olhada no menu do dia?"
+        },
+        {
+          "q": "Você",
+          "t": "Sì, per iniziare prendiamo delle bruschette miste e un litro d'acqua frizzante.",
+          "p": "Sim, para começar vamos querer bruschettas mistas e um litro de água com gás.",
+          "nuance": "'Acqua frizzante' (com gás) vs 'acqua naturale' (sem gás)."
+        },
+        {
+          "q": "Garçom",
+          "t": "E come primi piatti cosa vi porto?",
+          "p": "E de primeiro prato o que lhes trago?"
+        },
+        {
+          "q": "Você",
+          "t": "Per me i tagliolini ai funghi porcini, e per la signora un risotto allo zafferano.",
+          "p": "Para mim o tagliolini com cogumelos porcini, e para a senhora um risoto com açafrão."
+        },
+        {
+          "q": "Garçom",
+          "t": "Ottima scelta. Volete anche un vino della casa da abbinare?",
+          "p": "Ótima escolha. Querem também um vinho da casa para harmonizar?",
+          "nuance": "'Abbinare' é o verbo técnico e popular para harmonizar pratos e bebidas."
+        },
+        {
+          "q": "Você",
+          "t": "Volentieri, porti pure mezzo litro di rosso toscano.",
+          "p": "Com prazer, traga meio litro de tinto toscano."
+        }
+      ]
+    },
+    {
+      "id": "noleggio_auto",
+      "nivel": 1,
+      "titulo": "Aluguel de carro e zonas restritas (ZTL)",
+      "objetivo": "Alugar veículo e tirar dúvidas sobre pedágio e trânsito.",
+      "registro": "tecnico_pratico",
+      "cultural_note": "A ZTL (Zona a Traffico Limitato) existe em quase toda cidade histórica italiana; entrar de carro nela sem autorização gera multa pesada por câmera.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Buongiorno, ho una prenotazione a nome Albarello per una vettura compatta.",
+          "p": "Bom dia, tenho uma reserva em nome de Albarello para um carro compacto."
+        },
+        {
+          "q": "Atendente",
+          "t": "Ecco qui. Desidera aggiungere la copertura assicurativa casco totale senza franchigia?",
+          "p": "Aqui está. Deseja adicionar o seguro total sem franquia?",
+          "nuance": "'Franchigia' é o valor da franquia que você paga em caso de sinistro."
+        },
+        {
+          "q": "Você",
+          "t": "Sì, preferisco viaggiare senza pensieri. Come funziona per la ZTL in centro?",
+          "p": "Sim, prefiro viajar sem preocupações. Como funciona para a ZTL no centro?"
+        },
+        {
+          "q": "Atendente",
+          "t": "Attento! Non entri assolutamente nel centro storico oltre i varchi elettronici, altrimenti scatta la multa automatica.",
+          "p": "Atenção! Não entre de jeito nenhum no centro histórico além dos portões eletrônicos, senão dispara a multa automática."
+        },
+        {
+          "q": "Você",
+          "t": "Capito benissimo. Il serbatoio è pieno, vero? Lo riconsegno col pieno.",
+          "p": "Entendido perfeitamente. O tanque está cheio, certo? Devolvo com o tanque cheio.",
+          "nuance": "A política padrão é 'pieno per pieno' (pegar cheio e devolver cheio)."
+        }
+      ]
+    },
+    {
+      "id": "aperitivo",
+      "nivel": 2,
+      "titulo": "O ritual do aperitivo italiano",
+      "objetivo": "Interagir em ambiente social descontraído pós-trabalho.",
+      "registro": "coloquial_nativo",
+      "cultural_note": "O aperitivo é sagrado: das 18h às 21h, pedir um drinque dá acesso a petiscos no balcão. Pagar 'alla romana' significa dividir a conta igualmente.",
+      "linhas": [
+        {
+          "q": "Amigo",
+          "t": "Dai Willian, stacca il computer! Ci facciamo un aperitivo stasera?",
+          "p": "Bora Willian, desliga esse computador! Vamos tomar um aperitivo hoje à noite?",
+          "nuance": "'Staccare' no sentido de parar de trabalhar / encerrar o expediente."
+        },
+        {
+          "q": "Você",
+          "t": "Ma sì, volentieri! Dove andiamo di bello?",
+          "p": "Com certeza, topo! Onde vamos de bom?",
+          "nuance": "'Dove andiamo di bello?' é uma frase extremamente nativa para perguntar o destino do rolê."
+        },
+        {
+          "q": "Amigo",
+          "t": "C'è quel locale nuovo vicino ai Navigli che fa un buffet pazzesco.",
+          "p": "Tem aquele bar novo perto dos Navigli que serve um bufê incrível."
+        },
+        {
+          "q": "Você",
+          "t": "Allora prendo uno Spritz con Aperol e tante olive. Offro io il primo giro!",
+          "p": "Então vou querer um Spritz de Aperol e bastante azeitona. Eu pago a primeira rodada!",
+          "nuance": "'Offro io' = é por minha conta / eu pago."
+        },
+        {
+          "q": "Amigo",
+          "t": "Ma va', non se ne parla neanche! Facciamo alla romana come al solito.",
+          "p": "Que nada, nem pensar! Vamos dividir meio a meio como sempre.",
+          "nuance": "'Fare alla romana' = dividir a conta em partes iguais entre todos da mesa."
+        }
+      ]
+    },
+    {
+      "id": "disaccordo",
+      "nivel": 2,
+      "titulo": "Discordar com elegância e diplomacia",
+      "objetivo": "Expressar ponto de vista divergente em uma conversa casual.",
+      "registro": "conversacao_madura",
+      "cultural_note": "Italianos adoram debater fervorosamente com gestos, mas usam fórmulas como 'in realtà' ou 'dipende da come la vedi' para manter a civilidade.",
+      "linhas": [
+        {
+          "q": "Amigo",
+          "t": "Secondo me vivere in una grande metropoli è insostenibile ormai.",
+          "p": "Na minha opinião viver em uma grande metrópole ficou insustentável hoje em dia."
+        },
+        {
+          "q": "Você",
+          "t": "Capisco il tuo punto di vista, ma in realtà dipende molto dalle tue priorità quotidiane.",
+          "p": "Entendo seu ponto de vista, mas na verdade depende muito das suas prioridades do dia a dia.",
+          "nuance": "'In realtà' = na realidade / na verdade (muito usado para introduzir contraponto)."
+        },
+        {
+          "q": "Amigo",
+          "t": "Però il traffico e lo stress ti rubano anni di vita, ammettilo!",
+          "p": "Mas o trânsito e o estresse roubam anos de vida, admita!"
+        },
+        {
+          "q": "Você",
+          "t": "È vero, d'altra parte però hai accesso a stimoli culturali, mostre e connessioni che i piccoli centri non ti danno.",
+          "p": "É verdade, por outro lado você tem acesso a estímulos culturais, exposições e conexões que as cidades pequenas não oferecem.",
+          "nuance": "'D'altra parte' = por outro lado / sob outra perspectiva."
+        },
+        {
+          "q": "Amigo",
+          "t": "Beh, vista così ha il suo senso. Ognuno ha il suo equilibrio.",
+          "p": "Bom, vendo por esse ângulo faz sentido. Cada um tem o seu equilíbrio."
+        }
+      ]
+    },
+    {
+      "id": "racconto_perrengue",
+      "nivel": 2,
+      "titulo": "Contar um imprevisto com naturalidade",
+      "objetivo": "Usar marcadores discursivos nativos para narrar acontecimentos.",
+      "registro": "narrativo_expressivo",
+      "cultural_note": "Italianos articulam narrativas com 'allora' (então), 'insomma' (em suma/resumo), 'a un certo punto' (a certa altura) e 'mica' (não é que...).",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Non immagini neanche cosa mi è capitato stamattina mentre andavo in stazione!",
+          "p": "Você nem imagina o que me aconteceu hoje de manhã enquanto eu ia para a estação!"
+        },
+        {
+          "q": "Amigo",
+          "t": "Racconta, racconta! Che hai combinato stavolta?",
+          "p": "Conta, conta! O que aprontou dessa vez?",
+          "nuance": "'Che hai combinato?' é a expressão típica para 'o que você aprontou/fez?'."
+        },
+        {
+          "q": "Você",
+          "t": "Allora, ero già in ritardo. A un certo punto chiudo la porta di casa e... mi accorgo di aver lasciato le chiavi dentro!",
+          "p": "Então, eu já estava atrasado. A certa altura bato a porta de casa e... percebo que deixei as chaves lá dentro!"
+        },
+        {
+          "q": "Amigo",
+          "t": "Mamma mia, che incubo! E come hai risolto poi?",
+          "p": "Nossa mãe, que pesadelo! E como resolveu depois?"
+        },
+        {
+          "q": "Você",
+          "t": "Insomma, per fortuna il portiere aveva una copia di riserva, altrimenti avrei dovuto chiamare i vigili del fuoco!",
+          "p": "Em resumo, por sorte o porteiro tinha uma cópia reserva, senão eu teria que ter chamado os bombeiros!",
+          "nuance": "'Insomma' amarra o desfecho da história com perfeição nativa."
+        }
+      ]
+    },
+    {
+      "id": "chiacchiere_bar",
+      "nivel": 2,
+      "titulo": "Bate-papo informal e ironia entre amigos",
+      "objetivo": "Compreender humor leve, exclamações e quebras de expectativa.",
+      "registro": "rua_coloquial",
+      "cultural_note": "A palavra 'mica' adiciona ênfase negativa de surpresa ou ironia: 'non sono mica matto' = 'eu não sou nenhum maluco'.",
+      "linhas": [
+        {
+          "q": "Amigo",
+          "t": "Hai visto che Matteo ha cambiato di nuovo macchina? Dice che ha fatto un affarone.",
+          "p": "Viu que o Matteo trocou de carro de novo? Ele diz que fez um baita negócio.",
+          "nuance": "'Affarone' = sufixo aumentativo em 'affare' (negócio da china)."
+        },
+        {
+          "q": "Você",
+          "t": "Ma va là! Quella macchina consuma un botto, non è mica conveniente come crede lui.",
+          "p": "Que nada! Aquele carro bebe combustível pra caramba, não é nada econômico como ele pensa.",
+          "nuance": "'Un botto' é gíria italiana para 'uma barbaridade / pra caramba'. 'Mica' reforça a discordância."
+        },
+        {
+          "q": "Amigo",
+          "t": "Esatto! E poi si lamenta sempre di non arrivare a fine mese.",
+          "p": "Exato! E depois vive reclamando de não conseguir fechar o mês."
+        },
+        {
+          "q": "Você",
+          "t": "Ha proprio le mani bucate! Se continua così, resta al verde entro l'estate.",
+          "p": "Ele tem a mão furada mesmo! Se continuar assim, fica quebrado antes do verão.",
+          "nuance": "'Avere le mani bucate' = ser gastador compulsivo. 'Essere al verde' = estar sem um tostão furado."
+        }
+      ]
+    },
+    {
+      "id": "tecnologia_ia",
+      "nivel": 3,
+      "titulo": "Inteligência Artificial e o futuro do trabalho",
+      "objetivo": "Debater transformações tecnológicas e impactos socioculturais.",
+      "registro": "intelectual_analitico",
+      "cultural_note": "Em debates acadêmicos ou profissionais na Itália, valoriza-se o uso do congiuntivo (subjuntivo) e conectivos lógicos refinados.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Ritengo che l'avvento dei modelli linguistici non rappresenti soltanto un salto tecnico, bensì un mutamento epistemologico profondo.",
+          "p": "Considero que o advento dos modelos de linguagem não representa apenas um salto técnico, mas sim uma mudança epistemológica profunda.",
+          "nuance": "'Bensì' é um conectivo elegante para 'mas sim / antes pelo contrário'."
+        },
+        {
+          "q": "Colega",
+          "t": "Concordo, sebbene molti temano che l'automazione possa alienare le capacità analitiche dell'essere umano.",
+          "p": "Concordo, embora muitos temam que a automação possa alienar as capacidades analíticas do ser humano.",
+          "nuance": "'Sebbene' exige o congiuntivo ('temano', 'possa')."
+        },
+        {
+          "q": "Você",
+          "t": "Il rischio reale non è che le macchine pensino come noi, bensì che noi cominciamo a pensare come macchine per pura pigrizia cognitiva.",
+          "p": "O risco real não é que as máquinas pensem como nós, mas sim que nós comecemos a pensar como máquinas por pura preguiça cognitiva."
+        },
+        {
+          "q": "Colega",
+          "t": "Una riflessione acuta. La sfida educativa risiede proprio nel coltivare il senso critico e l'originalità interpretativa.",
+          "p": "Uma reflexão perspicaz. O desafio educacional reside precisamente em cultivar o senso crítico e a originalidade interpretativa."
+        }
+      ]
+    },
+    {
+      "id": "cibo_cultura",
+      "nivel": 3,
+      "titulo": "A culinária como patrimônio e identidade",
+      "objetivo": "Analisar por que a comida é tratada como dogma cultural na Itália.",
+      "registro": "cultural_sofisticado",
+      "cultural_note": "Para os italianos, respeitar receitas tradicionais não é frescura, é preservação de memória histórica regional.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "In molti paesi stranieri si tende a semplificare la cucina italiana, riducendola a qualche ingrediente stereotipato.",
+          "p": "Em muitos países estrangeiros tende-se a simplificar a culinária italiana, reduzindo-a a alguns ingredientes estereotipados."
+        },
+        {
+          "q": "Amigo",
+          "t": "È un vero peccato, perché la vera forza della nostra gastronomia affonda le radici nella biodiversità territoriale.",
+          "p": "É uma verdadeira pena, porque a verdadeira força da nossa gastronomia deita raízes na biodiversidade territorial.",
+          "nuance": "'Affondare le radici' = fincar raízes / ter origem profunda."
+        },
+        {
+          "q": "Você",
+          "t": "Difatti ogni vallata custodisce varietà autoctone di formaggi, grani e vitigni che non esistono altrove nel mondo.",
+          "p": "De fato cada vale guarda variedades autóctones de queijos, grãos e videiras que não existem em nenhum outro lugar do mundo."
+        },
+        {
+          "q": "Amigo",
+          "t": "Non è questione di essere conservatori ottusi, ma di salvaguardare secoli di sapienza artigianale contro l'omologazione industriale.",
+          "p": "Não é questão de ser conservador bitolado, mas de salvaguardar séculos de sabedoria artesanal contra a padronização industrial."
+        }
+      ]
+    },
+    {
+      "id": "filosofia_tempo",
+      "nivel": 3,
+      "titulo": "O tempo: aceleração moderna vs 'Dolce far niente'",
+      "objetivo": "Refletir sobre a relação com a produtividade e o ócio criativo.",
+      "registro": "filosofico_reflexivo",
+      "cultural_note": "'Il dolce far niente' não significa preguiça estéril, mas a habilidade de saborear o momento presente sem culpa produtivista.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Viviamo costantemente proiettati nella prossima scadenza, incapaci di abitare il momento presente con autentica consapevolezza.",
+          "p": "Vivemos constantemente projetados no próximo prazo, incapazes de habitar o momento presente com autêntica consciência."
+        },
+        {
+          "q": "Amigo",
+          "t": "Eppure l'antica idea del riposo riflessivo, l'otium latino, era considerata il presupposto indispensabile per qualunque slancio creativo.",
+          "p": "No entanto a antiga ideia do repouso reflexivo, o ócio latino, era considerada o pressuposto indispensável para qualquer ímpeto criativo."
+        },
+        {
+          "q": "Você",
+          "t": "Abbiamo barattato la serenità interiore per un'illusione di efficienza perpetua che ci lascia esausti e disorientati.",
+          "p": "Trocamos a serenidade interior por uma ilusão de eficiência perpétua que nos deixa exaustos e desorientados.",
+          "nuance": "'Barattare' = trocar / permutar uma coisa valiosa por outra."
+        },
+        {
+          "q": "Amigo",
+          "t": "Reimparare a fermarsi senza sensi di colpa è forse il gesto più rivoluzionario che possiamo compiere oggi.",
+          "p": "Reaprender a parar sem sentimentos de culpa é talvez o gesto mais revolucionário que podemos realizar hoje."
+        }
+      ]
+    },
+    {
+      "id": "tre_registri",
+      "nivel": 4,
+      "titulo": "Camaleão Linguístico: o mesmo pedido em 3 registros",
+      "objetivo": "Alternar com maestria entre o ultra-formal, o casual e a gíria.",
+      "registro": "comparativo_sociolinguistico",
+      "cultural_note": "Saber modular o registro conforme a pessoa e o ambiente é a marca registrada de um verdadeiro falante avançado.",
+      "linhas": [
+        {
+          "q": "Formal (Burocracia)",
+          "t": "Le sarei infinitamente grato se potesse cortesemente trasmettermi la documentazione richiesta al più presto.",
+          "p": "Ficaria infinitamente grato se pudesse gentilmente me encaminhar a documentação solicitada o quanto antes.",
+          "nuance": "Uso do condicional cortês ('Le sarei grato') e subjuntivo ('se potesse')."
+        },
+        {
+          "q": "Casual (Trabalho/Amigos)",
+          "t": "Mi potresti girare quei file appena hai due minuti liberi? Grazie mille!",
+          "p": "Você poderia me repassar aqueles arquivos assim que tiver dois minutos livres? Valeu demais!",
+          "nuance": "'Girare' no sentido de repassar/encaminhar um arquivo ou e-mail."
+        },
+        {
+          "q": "Rua (Informal íntimo)",
+          "t": "Senti, mandami subito 'sta roba che ne ho bisogno adesso!",
+          "p": "Escuta, me manda logo essa parada que eu tô precisando agora!",
+          "nuance": "''sta roba' (esta coisa/parada) é pura oralidade descontraída de rua."
+        }
+      ]
+    },
+    {
+      "id": "modi_di_dire",
+      "nivel": 4,
+      "titulo": "Expressões idiomáticas que nenhum curso básico ensina",
+      "objetivo": "Dominar metáforas cotidianas que nativos usam o tempo todo.",
+      "registro": "idiomatico_avancado",
+      "cultural_note": "Expressões como 'in bocca al lupo' exigem a resposta exata 'crepi il lupo' (ou 'viva il lupo'), nunca 'grazie'!",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Domani ho un colloquio di lavoro cruciale, speriamo bene!",
+          "p": "Amanhã tenho uma entrevista de emprego crucial, tomara que dê tudo certo!"
+        },
+        {
+          "q": "Amigo",
+          "t": "In bocca al lupo, spacca tutto! E mi raccomando: acqua in bocca con i colleghi attuali.",
+          "p": "Boa sorte, quebre tudo! E por favor: bico calado com os colegas atuais.",
+          "nuance": "'In bocca al lupo' = boa sorte. 'Acqua in bocca' = segredo absoluto, bico calado."
+        },
+        {
+          "q": "Você",
+          "t": "Crepi il lupo! Sai che non ho peli sulla lingua, ma stavolta terrò un profilo basso.",
+          "p": "Obrigado! Você sabe que não tenho papas na língua, mas desta vez vou manter a discrição.",
+          "nuance": "Resposta obrigatória a 'in bocca al lupo': 'crepi' (que o lobo morra). 'Non avere peli sulla lingua' = falar sem filtro."
+        },
+        {
+          "q": "Amigo",
+          "t": "Bravo. Anche perché andare a sbandierarlo prima del contratto sarebbe come gettare benzina sul fuoco.",
+          "p": "Muito bem. Até porque ir espalhar aos quatro ventos antes do contrato seria jogar gasolina no fogo."
+        }
+      ]
+    },
+    {
+      "id": "falsi_amici_lab",
+      "nivel": 4,
+      "titulo": "Laboratório de Falsos Cognatos Críticos",
+      "objetivo": "Desarmar na prática as 6 maiores armadilhas entre português e italiano.",
+      "registro": "contrastivo_precisao",
+      "cultural_note": "Falsos amigos causam constrangimentos graves: pedir 'burro' achando que é o animal (é manteiga), ou dizer 'parenti' achando que são seus pais (são apenas parentes).",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "I miei genitori vivono a Rio, mentre tutti gli altri parenti sono rimasti a San Paolo.",
+          "p": "Os meus pais moram no Rio, enquanto todos os outros parentes ficaram em São Paulo.",
+          "nuance": "GENITORI = pais (mãe e pai). PARENTI = parentes (tios, primos, etc.)."
+        },
+        {
+          "q": "Você",
+          "t": "Stamattina fa un freddo cane; bevo volentieri qualcosa di caldo con una noce di burro.",
+          "p": "Hoje de manhã faz um frio de cachorro; bebo com prazer algo quente com uma noz de manteiga.",
+          "nuance": "CALDO = quente (não frio!). BURRO = manteiga (o animal é 'asino')."
+        },
+        {
+          "q": "Você",
+          "t": "Dobbiamo salire al terzo piano per vedere la camera che abbiamo prenotato.",
+          "p": "Devemos subir ao terceiro andar para ver o quarto que reservamos.",
+          "nuance": "SALIRE = subir (não sair!). CAMERA = quarto de dormir (não a câmera de foto/vídeo, que é 'fotocamera')."
+        },
+        {
+          "q": "Você",
+          "t": "Questo tessuto è morbidissimo; bisogna curare bene i dettagli senza avere fretta.",
+          "p": "Este tecido é macio demais; é preciso cuidar bem dos detalhes sem ter pressa.",
+          "nuance": "MORBIDO = macio/suave (não mórbido!). CURARE = cuidar/tratar com carinho (não só curar doença)."
+        }
+      ]
     }
-   ],
-   "nivel": 1
-  },
-  {
-   "id": "caminho",
-   "titulo": "Perguntar o caminho",
-   "objetivo": "Achar a estação e entender direções.",
-   "linhas": [
-    {
-     "q": "Você",
-     "t": "Scusi, dov’è la stazione?",
-     "p": "Com licença, onde fica a estação?"
-    },
-    {
-     "q": "Passante",
-     "t": "Vada dritto e poi giri a destra.",
-     "p": "Vá em frente e depois vire à direita."
-    },
-    {
-     "q": "Você",
-     "t": "È lontano da qui?",
-     "p": "É longe daqui?"
-    },
-    {
-     "q": "Passante",
-     "t": "No, è a cinque minuti a piedi.",
-     "p": "Não, é a cinco minutos a pé."
-    },
-    {
-     "q": "Você",
-     "t": "Grazie, molto gentile.",
-     "p": "Obrigado, muito gentil."
-    }
-   ],
-   "nivel": 1
-  },
-  {
-   "id": "restaurante",
-   "titulo": "No restaurante",
-   "objetivo": "Pedir mesa, comida e a conta.",
-   "linhas": [
-    {
-     "q": "Você",
-     "t": "Buonasera, un tavolo per due, per favore.",
-     "p": "Boa noite, uma mesa para dois, por favor."
-    },
-    {
-     "q": "Garçom",
-     "t": "Certo, da questa parte. Ecco il menù.",
-     "p": "Claro, por aqui. Aqui está o cardápio."
-    },
-    {
-     "q": "Você",
-     "t": "Vorrei gli spaghetti al pomodoro e dell’acqua.",
-     "p": "Queria o espaguete ao molho de tomate e água."
-    },
-    {
-     "q": "Você",
-     "t": "Il conto, per favore.",
-     "p": "A conta, por favor."
-    }
-   ],
-   "nivel": 1
-  },
-  {
-   "id": "apresentacao",
-   "titulo": "Apresentar-se",
-   "objetivo": "Dizer quem você é e de onde vem.",
-   "linhas": [
-    {
-     "q": "Marco",
-     "t": "Ciao, mi chiamo Marco. E tu?",
-     "p": "Oi, me chamo Marco. E você?"
-    },
-    {
-     "q": "Você",
-     "t": "Io sono Ana e vengo dal Brasile.",
-     "p": "Eu sou Ana e venho do Brasil."
-    },
-    {
-     "q": "Marco",
-     "t": "Parli italiano?",
-     "p": "Você fala italiano?"
-    },
-    {
-     "q": "Você",
-     "t": "Un po’, sto ancora imparando.",
-     "p": "Um pouco, ainda estou aprendendo."
-    },
-    {
-     "q": "Marco",
-     "t": "Piacere di conoscerti!",
-     "p": "Prazer em conhecer você!"
-    }
-   ],
-   "nivel": 1
-  },
-  {
-   "id": "loja",
-   "titulo": "Comprar numa loja",
-   "objetivo": "Perguntar preço e pedir algo mais barato.",
-   "linhas": [
-    {
-     "q": "Atendente",
-     "t": "Buongiorno, posso aiutarla?",
-     "p": "Bom dia, posso ajudá-lo?"
-    },
-    {
-     "q": "Você",
-     "t": "Sì, cerco una maglietta. Quanto costa questa?",
-     "p": "Sim, procuro uma camiseta. Quanto custa esta?"
-    },
-    {
-     "q": "Atendente",
-     "t": "Costa venti euro.",
-     "p": "Custa vinte euros."
-    },
-    {
-     "q": "Você",
-     "t": "È troppo cara. Ha qualcosa di meno costoso?",
-     "p": "É cara demais. Tem algo mais barato?"
-    },
-    {
-     "q": "Atendente",
-     "t": "Certo, guardi queste.",
-     "p": "Claro, veja estas."
-    }
-   ],
-   "nivel": 1
-  },
-  {
-   "id": "ajuda",
-   "titulo": "Pedir ajuda",
-   "objetivo": "Frases essenciais numa emergência.",
-   "linhas": [
-    {
-     "q": "Você",
-     "t": "Mi scusi, ho bisogno di aiuto.",
-     "p": "Com licença, preciso de ajuda."
-    },
-    {
-     "q": "Você",
-     "t": "Mi sento male. Può chiamare un medico?",
-     "p": "Estou passando mal. Pode chamar um médico?"
-    },
-    {
-     "q": "Passante",
-     "t": "Subito! Si sieda qui.",
-     "p": "Já! Sente-se aqui."
-    },
-    {
-     "q": "Você",
-     "t": "Dov’è l’ospedale più vicino?",
-     "p": "Onde fica o hospital mais próximo?"
-    }
-   ],
-   "nivel": 1
-  },
-  {
-   "id": "cumprimentos",
-   "titulo": "Cumprimentos do dia",
-   "objetivo": "Dizer olá e se despedir, no formal.",
-   "nivel": 1,
-   "linhas": [
-    {
-     "q": "Marco",
-     "t": "Buongiorno! Come sta?",
-     "p": "Bom dia! Como o senhor está?"
-    },
-    {
-     "q": "Você",
-     "t": "Bene, grazie. E lei?",
-     "p": "Bem, obrigado. E o senhor?"
-    },
-    {
-     "q": "Marco",
-     "t": "Bene anch’io. Arrivederci, a domani!",
-     "p": "Bem também. Até logo, até amanhã!"
-    },
-    {
-     "q": "Você",
-     "t": "A domani! Buona giornata!",
-     "p": "Até amanhã! Tenha um bom dia!"
-    }
-   ]
-  },
-  {
-   "id": "numeros",
-   "titulo": "Números e preços",
-   "objetivo": "Perguntar quanto custa e entender o valor.",
-   "nivel": 1,
-   "linhas": [
-    {
-     "q": "Você",
-     "t": "Quanto costa questo libro?",
-     "p": "Quanto custa este livro?"
-    },
-    {
-     "q": "Atendente",
-     "t": "Costa quindici euro e cinquanta.",
-     "p": "Custa quinze euros e cinquenta."
-    },
-    {
-     "q": "Você",
-     "t": "E quello costa dieci euro?",
-     "p": "E aquele custa dez euros?"
-    },
-    {
-     "q": "Atendente",
-     "t": "No, costa dodici euro.",
-     "p": "Não, custa doze euros."
-    },
-    {
-     "q": "Você",
-     "t": "Prendo questo, grazie.",
-     "p": "Vou levar este, obrigado."
-    }
-   ]
-  },
-  {
-   "id": "hotel",
-   "titulo": "No hotel",
-   "objetivo": "Fazer o check-in.",
-   "nivel": 1,
-   "linhas": [
-    {
-     "q": "Você",
-     "t": "Buonasera, ho una prenotazione a nome Silva.",
-     "p": "Boa noite, tenho uma reserva em nome de Silva."
-    },
-    {
-     "q": "Recepção",
-     "t": "Un momento… Sì, una camera doppia per tre notti.",
-     "p": "Um momento… Sim, um quarto duplo por três noites."
-    },
-    {
-     "q": "Você",
-     "t": "Perfetto. A che ora è la colazione?",
-     "p": "Perfeito. A que horas é o café da manhã?"
-    },
-    {
-     "q": "Recepção",
-     "t": "Dalle sette alle dieci.",
-     "p": "Das sete às dez."
-    },
-    {
-     "q": "Recepção",
-     "t": "Ecco la chiave. Buona permanenza!",
-     "p": "Aqui está a chave. Boa estadia!"
-    }
-   ]
-  },
-  {
-   "id": "treno",
-   "titulo": "Comprar passagem de trem",
-   "objetivo": "Pedir passagem e horário.",
-   "nivel": 1,
-   "linhas": [
-    {
-     "q": "Você",
-     "t": "Un biglietto per Roma, per favore.",
-     "p": "Uma passagem para Roma, por favor."
-    },
-    {
-     "q": "Bilheteria",
-     "t": "Solo andata o andata e ritorno?",
-     "p": "Só ida ou ida e volta?"
-    },
-    {
-     "q": "Você",
-     "t": "Solo andata. A che ora parte il prossimo treno?",
-     "p": "Só ida. A que horas parte o próximo trem?"
-    },
-    {
-     "q": "Bilheteria",
-     "t": "Alle quattordici e trenta, dal binario cinque.",
-     "p": "Às catorze e trinta, da plataforma cinco."
-    }
-   ]
-  },
-  {
-   "id": "farmacia",
-   "titulo": "Na farmácia",
-   "objetivo": "Dizer o que sente e pedir um remédio.",
-   "nivel": 1,
-   "linhas": [
-    {
-     "q": "Você",
-     "t": "Buongiorno, ho mal di testa. Cosa mi consiglia?",
-     "p": "Bom dia, estou com dor de cabeça. O que o senhor recomenda?"
-    },
-    {
-     "q": "Farmacêutico",
-     "t": "Prenda una compressa ogni otto ore.",
-     "p": "Tome um comprimido a cada oito horas."
-    },
-    {
-     "q": "Você",
-     "t": "Ha anche qualcosa per la tosse?",
-     "p": "Tem também algo para a tosse?"
-    },
-    {
-     "q": "Farmacêutico",
-     "t": "Sì, uno sciroppo. Sono dodici euro in tutto.",
-     "p": "Sim, um xarope. São doze euros no total."
-    }
-   ]
-  },
-  {
-   "id": "tempo",
-   "titulo": "Falar do tempo",
-   "objetivo": "Conversa leve sobre o clima.",
-   "nivel": 1,
-   "linhas": [
-    {
-     "q": "Marco",
-     "t": "Che bella giornata oggi!",
-     "p": "Que belo dia hoje!"
-    },
-    {
-     "q": "Você",
-     "t": "Sì, c’è il sole, ma fa un po’ freddo.",
-     "p": "Sim, tem sol, mas faz um pouco de frio."
-    },
-    {
-     "q": "Marco",
-     "t": "Domani invece piove.",
-     "p": "Amanhã, em compensação, vai chover."
-    },
-    {
-     "q": "Você",
-     "t": "Allora porto l’ombrello.",
-     "p": "Então levo o guarda-chuva."
-    }
-   ]
-  },
-  {
-   "id": "famiglia",
-   "titulo": "Falar da família",
-   "objetivo": "Irmãos, pais e onde moram.",
-   "nivel": 1,
-   "linhas": [
-    {
-     "q": "Marco",
-     "t": "Hai fratelli o sorelle?",
-     "p": "Você tem irmãos ou irmãs?"
-    },
-    {
-     "q": "Você",
-     "t": "Ho una sorella e due fratelli.",
-     "p": "Tenho uma irmã e dois irmãos."
-    },
-    {
-     "q": "Marco",
-     "t": "I tuoi genitori abitano qui?",
-     "p": "Seus pais moram aqui? (genitori = pais; parenti = parentes)"
-    },
-    {
-     "q": "Você",
-     "t": "No, abitano in Brasile.",
-     "p": "Não, moram no Brasil."
-    }
-   ]
-  },
-  {
-   "id": "routine",
-   "titulo": "Falar da rotina",
-   "objetivo": "Descrever o seu dia.",
-   "nivel": 2,
-   "linhas": [
-    {
-     "q": "Marco",
-     "t": "Che cosa fai di solito la mattina?",
-     "p": "O que você costuma fazer de manhã?"
-    },
-    {
-     "q": "Você",
-     "t": "Mi sveglio alle sette e faccio colazione.",
-     "p": "Acordo às sete e tomo café da manhã."
-    },
-    {
-     "q": "Você",
-     "t": "Poi vado al lavoro in autobus.",
-     "p": "Depois vou ao trabalho de ônibus."
-    },
-    {
-     "q": "Marco",
-     "t": "E la sera?",
-     "p": "E à noite?"
-    },
-    {
-     "q": "Você",
-     "t": "La sera cucino e studio un po’ d’italiano.",
-     "p": "À noite cozinho e estudo um pouco de italiano."
-    }
-   ]
-  },
-  {
-   "id": "invito",
-   "titulo": "Convidar um amigo",
-   "objetivo": "Aceitar um convite e combinar.",
-   "nivel": 2,
-   "linhas": [
-    {
-     "q": "Marco",
-     "t": "Sabato sera facciamo una cena a casa mia. Vuoi venire?",
-     "p": "Sábado à noite fazemos um jantar na minha casa (cena = jantar). Quer vir?"
-    },
-    {
-     "q": "Você",
-     "t": "Volentieri! Che cosa posso portare?",
-     "p": "Com prazer! O que posso levar?"
-    },
-    {
-     "q": "Marco",
-     "t": "Porta pure un dolce, se vuoi.",
-     "p": "Leve uma sobremesa, se quiser."
-    },
-    {
-     "q": "Você",
-     "t": "Va bene. A che ora?",
-     "p": "Combinado. A que horas?"
-    },
-    {
-     "q": "Marco",
-     "t": "Verso le otto.",
-     "p": "Por volta das oito."
-    }
-   ]
-  },
-  {
-   "id": "opinione",
-   "titulo": "Dar a sua opinião",
-   "objetivo": "Concordar e discordar com educação.",
-   "nivel": 2,
-   "linhas": [
-    {
-     "q": "Marco",
-     "t": "Ti è piaciuto il film?",
-     "p": "Você gostou do filme?"
-    },
-    {
-     "q": "Você",
-     "t": "Sì, molto! Secondo me, la fine è bellissima.",
-     "p": "Sim, muito! Na minha opinião, o final é lindíssimo."
-    },
-    {
-     "q": "Marco",
-     "t": "Io non sono d’accordo: era troppo lungo.",
-     "p": "Eu não concordo: era longo demais."
-    },
-    {
-     "q": "Você",
-     "t": "Capisco, ma a me è piaciuto lo stesso.",
-     "p": "Entendo, mas eu gostei mesmo assim."
-    }
-   ]
-  },
-  {
-   "id": "medico",
-   "titulo": "No médico",
-   "objetivo": "Descrever sintomas.",
-   "nivel": 2,
-   "linhas": [
-    {
-     "q": "Médico",
-     "t": "Buongiorno, che cosa si sente?",
-     "p": "Bom dia, o que o senhor está sentindo?"
-    },
-    {
-     "q": "Você",
-     "t": "Ho la febbre e mi fa male la gola.",
-     "p": "Estou com febre e minha garganta dói."
-    },
-    {
-     "q": "Médico",
-     "t": "Da quanti giorni?",
-     "p": "Há quantos dias?"
-    },
-    {
-     "q": "Você",
-     "t": "Da due giorni.",
-     "p": "Há dois dias."
-    },
-    {
-     "q": "Médico",
-     "t": "Le prescrivo una cura. Riposi e beva molta acqua.",
-     "p": "Vou receitar um tratamento. Descanse e beba bastante água."
-    }
-   ]
-  }
- ]
+  ]
 }
