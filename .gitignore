@@ -1,8 +1,10 @@
 # Cache local (áudios MP3 gerados, modelos HuggingFace/Whisper, respostas de API)
 cache/
+cache
 
 # Dados pessoais e progresso do usuário
 dados/
+dados
 
 # Python
 __pycache__/
@@ -37,3 +39,6 @@ ENV/
 *.swo
 .DS_Store
 Thumbs.db
+
+# Testes (npm)
+node_modules/

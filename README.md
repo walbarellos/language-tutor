@@ -50,25 +50,66 @@ Recomenda-se o uso do gerenciador de pacotes ultrarrápido [uv](https://github.c
 uv run --with edge-tts --with "wordfreq[cjk]" --with pykakasi --with faster-whisper python leitor_local.py
 ```
 
+(`WHISPER_BEAM=1` é o padrão: reconhecimento mais rápido para frases curtas; suba para 5 se quiser mais precisão.)
+
 O servidor iniciará automaticamente em `http://localhost:8765` e abrirá a página no navegador padrão.
 
 > **Nota:** Na primeira vez em que a gravação for utilizada, o `faster-whisper` fará o download local do modelo `small` (~500 MB) e o manterá em cache (`cache/hf/`). Para máquinas com menor capacidade de memória, defina `WHISPER_MODEL=base` ou `tiny` antes de rodar.
 
 ---
 
+## Modo Treino (🎯, atalho `T`)
+
+Conduz a prática sozinho, frase a frase, sem apertar nada: **ouvir devagar → ouvir normal → falar** (a gravação começa e **para sozinha** quando você cala) **→ nota → ≥ 80% avança, senão repete** (até 2 vezes, depois segue). Sem microfone, vira "ouvir + pausa para repetir". Parar o treino cancela áudio, gravação e esperas.
+
+**Calibrar o fim de fala:** em ⚙ há dois controles. *Volume mínimo* (menor = mais sensível: use se o Treino não percebe que você falou) e *Silêncio para encerrar* (maior = espera mais antes de cortar: use se ele corta no meio da frase). Valem já na próxima gravação.
+
+**Segurança local:** o servidor só atende `Host` local e só aceita POST da própria origem; uma página de outro site aberta no seu navegador não consegue gravar seus cartões.
+
+Atalhos: `Espaço` tocar/pausar · `←` `→` frase · `↑` `↓` velocidade · `L` repetir · `T` treino · `R` revelar · `G` gravar. Clicar numa frase a toca e continua; clicar numa palavra toca só a palavra.
+
+---
+
 ## Estrutura do Projeto
+
+Sem build e sem framework: módulos ES nativos, cada um pequeno e com uma responsabilidade (o maior tem ~115 linhas). O servidor também é um pacote (`servidor/`), com o maior módulo em ~110 linhas.
 
 ```
 language-tutor/
-├── leitor_local.py           # Servidor local HTTP, integração Edge-TTS, Whisper e APIs
-├── leitor-italiano.html      # Interface web SPA (HTML5 / CSS moderno / Vanilla JS)
-├── index.html               # Cópia compatível para servidores web estáticos
-├── validar_trilhas.py       # Script de validação automática de consistência das traduções
-├── trilhas/                 # Trilhas situacionais por idioma (JSON)
-│   ├── it.json              # 17 situações em italiano (Nível 1 e 2)
-│   ├── ja.json              # 5 situações em japonês (com furigana)
-│   └── es.json              # 4 situações em espanhol
-└── .gitignore               # Ignora diretórios de cache e dados locais
+├── leitor_local.py        # porta de entrada (13 linhas): abre o servidor e o navegador
+├── servidor/              # um módulo por responsabilidade
+│   ├── rotas.py           # tabela de rotas + proteção Host/Origin
+│   ├── tts.py, voz.py     # motor de voz + cache (trava por chave, escrita atômica)
+│   ├── fala.py            # Whisper local
+│   ├── palavras.py        # idioma da frase, frequência (wordfreq), furigana/romaji (pykakasi)
+│   ├── consultas.py       # Wiktionary e tradução, com cache em disco
+│   ├── armazem.py         # cartões, progresso e trilhas (escrita atômica)
+│   └── config.py          # caminhos e constantes
+├── validar_trilhas.py     # validador das traduções das trilhas
+├── trilhas/               # trilhas situacionais por idioma (JSON)
+├── web/
+│   ├── index.html         # só a casca (HTML)
+│   ├── css/app.css
+│   └── js/
+│       ├── main.js        # monta tudo e liga os botões (sem regra de negócio)
+│       ├── audio.js       # AudioController: ÚNICA saída de som (1 voz, single-flight, pausa)
+│       ├── player.js      # decide O QUE tocar (frase ativa, auto-avanço, loop, pausa p/ repetir)
+│       ├── trainer.js     # Modo Treino (máquina de estados)
+│       ├── recorder.js / vad.js / settings.js   # microfone, detector de fim de fala e sua calibração
+│       ├── shadowing.js   # transcrição + nota por palavra
+│       ├── srs.js         # cartões e SM-2 (Scheduler trocável)
+│       ├── trilha.js, session.js, pipeline.js, languages.js
+│       ├── render.js, wordpanel.js, dictionary.js, freq.js, clips.js, api.js, state.js, util.js
+└── tests/                 # node:test (JS) + unittest (Python)
+```
+
+Invariantes de cada módulo (A1–A6 em `audio.js`, P1–P3 em `player.js`, R1–R3 em `trainer.js`, T1–T3 em `servidor/tts.py`, S1–S3 em `servidor/rotas.py`) estão no topo do arquivo e cada uma tem teste.
+
+## Testes
+
+```bash
+npm install     # só instala o jsdom, usado no smoke test
+npm test        # 62 testes JS + 21 Python
 ```
 
 ---

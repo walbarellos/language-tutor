@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laboratório da língua</title>
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-m="hop" data-freq="on" data-read="furi">
+<header><h1>Laboratório da língua</h1><button class="b" id="bTrl">Trilha</button><button class="b" id="bRev">Revisar (0)</button><button class="b" id="bImp">Texto</button><button class="b" id="bSet" aria-label="Configurações">⚙</button></header>
+<main><div id="page" aria-live="off"></div><aside id="pw" aria-live="polite"></aside></main>
+<footer role="toolbar" aria-label="Controles de leitura">
+<div id="coach" role="status" aria-live="polite" hidden></div>
+<button class="b" id="bPrev" aria-label="Frase anterior">‹</button>
+<button class="b" id="bPlay" aria-label="Tocar ou pausar">▶</button>
+<button class="b" id="bNext" aria-label="Próxima frase">›</button>
+<label>Velocidade <select class="b" id="sp"><option>0.5</option><option>0.75</option><option selected>1</option><option>1.25</option><option>1.5</option></select></label>
+<button class="b" id="bLoop" aria-pressed="false">Repetir</button>
+<button class="b" id="bTr" aria-pressed="false">Tradução</button>
+<button class="b" id="bFq" aria-pressed="true">Frequência</button>
+<button class="b" id="bRd" hidden>Leitura: furigana</button>
+<button class="b" id="bTrain" aria-pressed="false" title="Atalho: T">🎯 Treino</button>
+<button class="b" id="bRec" aria-pressed="false">🎙 Gravar</button>
+<button class="b" id="bEar" aria-pressed="false">Só ouvir</button>
+<button class="b" id="bGap" aria-pressed="false">Pausa p/ repetir</button>
+</footer>
+<div id="msg" role="alert"></div>
+
+<dialog id="dImp"><form method="dialog"><label for="tx">Cole um texto (português e italiano misturados). Use [it] ou [pt] no começo de uma frase para forçar o idioma.</label><textarea id="tx"></textarea><p><button class="b" value="ok">Estudar</button> <button class="b" value="x">Cancelar</button></p></form></dialog>
+<dialog id="dTrl"><div id="trl"></div><p><button class="b" id="trlX">Fechar</button></p></dialog>
+<dialog id="dRev"><div id="rv" aria-live="polite"></div><p><button class="b" id="rvX">Fechar</button></p></dialog>
+<dialog id="dSet"><form method="dialog">
+<label for="vpt">Voz do português</label><select id="vpt"><option value="pt-BR-FranciscaNeural">Francisca</option><option value="pt-BR-AntonioNeural">Antonio</option></select>
+<label for="sl">Idioma de estudo (cole um texto novo depois de trocar)</label><select id="sl"></select>
+<label for="vit">Voz do idioma de estudo</label><select id="vit"></select>
+<label for="mo">Movimento da palavra</label><select id="mo"><option value="none">Nenhum</option><option value="soft">Suave (só cor)</option><option value="hop">Pulo</option></select>
+<label for="fs">Tamanho do texto</label><input id="fs" type="range" min="0.9" max="1.8" step="0.1" value="1" style="width:100%">
+<label for="vthr">Volume mínimo para contar como fala: <output id="vthrV"></output> (menor = mais sensível)</label><input id="vthr" type="range" min="0.005" max="0.05" step="0.005" style="width:100%">
+<label for="vsil">Silêncio para encerrar sua fala no Treino: <output id="vsilV"></output></label><input id="vsil" type="range" min="500" max="2000" step="100" style="width:100%">
+<p><button class="b">Fechar</button></p></form></dialog>
+
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>
