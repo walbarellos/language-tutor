@@ -363,6 +363,52 @@
       ]
     },
     {
+      "id": "idioleto_pragmatico",
+      "nivel": 2,
+      "titulo": "O Seu Idioleto: Direto ao Ponto & Investigação",
+      "objetivo": "Treinar a sua voz autêntica: pensamento rápido, zero enrolação, testes práticos e ceticismo analítico.",
+      "registro": "coloquial_assertivo",
+      "cultural_note": "Italianos cultos e pragmáticos valorizam a agilidade mental (prontezza) e o pragmatismo técnico. Expressões como andiamo al sodo e fuffa mostram domínio cirúrgico da língua sem academicismo engessado.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Dai, andiamo dritti al sodo: senza troppi giri di parole, cosa non quadra qui?",
+          "p": "Bora, vamos direto ao ponto: sem rodeios, o que é que não está batendo aqui?",
+          "nuance": "'Andare al sodo' (cortar papo furado) + 'non quadra' (algo não fecha a conta ou a lógica)."
+        },
+        {
+          "q": "Você",
+          "t": "Ho guardato sotto il cofano del sistema: c'era un intoppo nel flusso, ma adesso gira liscio come l'olio.",
+          "p": "Olhei por baixo do capô do sistema: tinha um engasgo no fluxo, mas agora roda macio como manteiga.",
+          "nuance": "'Sotto il cofano' (por baixo do capô) + 'gira liscio come l'olio' (expressão para rodar perfeitamente)."
+        },
+        {
+          "q": "Você",
+          "t": "Ma porca miseria, ma come facevi a non saperlo?! Meno male che ho indagato a fondo.",
+          "p": "Pqp, mas como você não sabia disso?! Menos mal que eu investiguei a fundo.",
+          "nuance": "'Porca miseria' (exclamação de choque espontâneo) + 'meno male' (ainda bem / felizmente)."
+        },
+        {
+          "q": "Você",
+          "t": "Lascia perdere la fuffa del marketing e concentriamoci su quello che funziona per davvero.",
+          "p": "Deixa de lado o papo furado do marketing e vamos focar naquilo que funciona de verdade.",
+          "nuance": "'Fuffa' é o melhor termo em italiano para enrolação, fumaça ou conversa fiada."
+        },
+        {
+          "q": "Você",
+          "t": "Tagliamo la testa al toro: facciamo un test sotto torchio e vediamo cosa resta di concreto.",
+          "p": "Vamos cortar o mal pela raiz: fazemos um teste sob pressão e vemos o que sobra de concreto.",
+          "nuance": "'Tagliare la testa al toro' (resolver de vez) + 'sotto torchio' (testar até o talo / interrogar)."
+        },
+        {
+          "q": "Você",
+          "t": "Pazzesco, ha funzionato al primo colpo! Era proprio quello che ci voleva, problema risolto.",
+          "p": "Caralho, funcionou de primeira! Era exatamente o que precisava, problema resolvido.",
+          "nuance": "'Al primo colpo' (de primeira) + 'quello che ci voleva' (a solução exata necessária)."
+        }
+      ]
+    },
+    {
       "id": "aperitivo",
       "nivel": 2,
       "titulo": "O ritual do aperitivo italiano",

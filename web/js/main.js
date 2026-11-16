@@ -16,7 +16,7 @@ import { api } from "./api.js";
 import { getVad, setVad } from "./settings.js";
 
 const DEFAULT = `Nasce da questo una disputa: s’egli è meglio essere amato che temuto, o e converso.
-Rispondo che si vorrebbe essere l’uno e l’altro; ma perché egli è difficile accozzarli insieme, è muito mais seguro essere temuto che amato, quando si abbia a mancare dell’uno de’ dua.`;
+Rispondo che si vorrebbe essere l’uno e l’altro; ma perché egli è difficile accozzarli insieme, è molto più sicuro essere temuto che amato, quando si abbia a mancare dell’uno de’ dua.`;
 
 // ---------- montagem ----------
 const audio = new AudioController();
