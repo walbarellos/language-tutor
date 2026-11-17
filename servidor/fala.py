@@ -24,6 +24,11 @@ def _remendar_av():
 
 
 def transcrever(audio, lang):
+    return transcrever_det(audio, lang)["text"]
+
+
+def transcrever_det(audio, lang):
+    """Texto + palavras com início/fim (s) e confiança (0-1): base de ritmo, pausas e clareza."""
     global _WHISPER
     _remendar_av()
     try:
@@ -37,5 +42,10 @@ def transcrever(audio, lang):
         with tempfile.NamedTemporaryFile(suffix=".webm") as f:
             f.write(audio); f.flush()
             # beam 1 = guloso, bem mais rápido para frases curtas; vad_filter corta silêncio e evita texto inventado
-            segs, _ = _WHISPER.transcribe(f.name, language=lang, vad_filter=True, beam_size=int(os.environ.get("WHISPER_BEAM", "1")))
-            return " ".join(s.text.strip() for s in segs)
+            segs, _ = _WHISPER.transcribe(f.name, language=lang, vad_filter=True, beam_size=int(os.environ.get("WHISPER_BEAM", "1")), word_timestamps=True)
+            texto, palavras = [], []
+            for s in segs:
+                texto.append(s.text.strip())
+                for w in (s.words or []):
+                    palavras.append({"w": w.word.strip(), "s": round(w.start, 2), "e": round(w.end, 2), "p": round(w.probability, 2)})
+            return {"text": " ".join(texto), "words": palavras}

@@ -6,6 +6,9 @@ import { textPipeline } from "./pipeline.js";
 import { renderSegs, applyRead, applyEar } from "./render.js";
 import { loadFreq } from "./freq.js";
 import { showWord } from "./wordpanel.js";
+import { markMastery } from "./recompensa.js";
+import { trapsOf } from "./diff.js";
+function markTraps(segs) { segs.forEach(s => s.lang === "it" && s.tokens.forEach(t => { const id = trapsOf(t.text); if (id) t.el.dataset.trap = id; })); }
 
 const handlers = {
   onSeg: i => { app.trainer?.stop(); app.player.play(i); },
@@ -14,7 +17,7 @@ const handlers = {
 };
 export function setSegs(segs) {
   app.segs = segs; renderSegs(segs, handlers); app.player.setSegs(segs);
-  applyRead(); applyEar(); loadFreq();
+  applyRead(); applyEar(); loadFreq(); markMastery(); markTraps(segs);
 }
 export async function load(text) {
   app.trainer?.stop(); app.player.stop(); app.sit = null;

@@ -18,44 +18,16 @@ export class Recorder {
   }
 
   // Resolve { blob, reason } — reason: stop-silence | stop-nospeech | stop-max | manual | closed
-  record({ vad = true, maxMs = 15000, lang = "it" } = {}) {
+  record({ vad = true, maxMs = 15000 } = {}) {
     if (!this.stream) return Promise.reject(new Error("Microfone não aberto."));
     this.stopNow("manual");
     const { stream, an } = this;                      // capturados: close() zera this.an, mas esta gravação termina com o que tem
     return new Promise(resolve => {
       const mr = new MediaRecorder(stream), chunks = [], det = new Vad({ maxMs, ...this.vadCfg() }), buf = new Float32Array(an.fftSize);
       let reason = "manual", poll = 0;
-      let liveSr = null;
-      const SR = typeof window !== "undefined" && (window.SpeechRecognition || window.webkitSpeechRecognition);
-      if (SR) {
-        try {
-          liveSr = new SR();
-          liveSr.continuous = true;
-          liveSr.interimResults = true;
-          const lmap = { it: "it-IT", ja: "ja-JP", es: "es-ES", en: "en-US", fr: "fr-FR", de: "de-DE", pt: "pt-BR" };
-          liveSr.lang = lmap[lang] || lang;
-          liveSr.onresult = ev => {
-            let s = "";
-            for (let i = ev.resultIndex; i < ev.results.length; ++i) s += ev.results[i][0].transcript;
-            if (s) this.onInterim?.(s);
-          };
-          liveSr.onerror = () => {};
-          liveSr.start();
-        } catch {}
-      }
       mr.ondataavailable = e => chunks.push(e.data);
-      mr.onstop = () => {
-        try { liveSr?.stop(); } catch {}
-        clearInterval(poll); this.cur = null;
-        resolve({ blob: new Blob(chunks, { type: mr.mimeType }), reason });
-      };
-      this.cur = {
-        stop: why => {
-          reason = why; clearInterval(poll);
-          try { liveSr?.stop(); } catch {}
-          if (mr.state === "recording") mr.stop();
-        }
-      };
+      mr.onstop = () => { clearInterval(poll); this.cur = null; resolve({ blob: new Blob(chunks, { type: mr.mimeType }), reason }); };
+      this.cur = { stop: why => { reason = why; clearInterval(poll); if (mr.state === "recording") mr.stop(); } };   // para o timer JÁ: não espera o onstop
       mr.start();
       poll = setInterval(() => {
         an.getFloatTimeDomainData(buf);

@@ -7,12 +7,9 @@
 <link rel="stylesheet" href="/css/app.css">
 </head>
 <body data-m="hop" data-freq="on" data-read="furi">
-<header>
-<h1>Laboratório da língua</h1>
-<div id="stkBadge" class="stk-badge" title="Sequência de acertos e XP acumulado" data-active="false"><span class="stk-fire">⚡</span> <b id="stkNum">0x</b> combo <span class="stk-xp" id="xpNum">+0 XP</span></div>
-<button class="b" id="bTrl" data-i="route"><span>Trilha</span></button><button class="b" id="bRev" data-i="star"><span>Revisar (0)</span></button><button class="b" id="bImp" data-i="text"><span>Texto</span></button><button class="b" id="bSet" data-i="sliders" aria-label="Configurações"></button>
-</header>
+<header><h1>Laboratório da língua</h1><button class="b" id="bTrl" data-i="route"><span>Trilha</span></button><button class="b" id="bRev" data-i="star"><span>Revisar (0)</span></button><button class="b" id="bImp" data-i="text"><span>Texto</span></button><button class="b" id="bXp" aria-label="Progresso"><svg class="goal" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle class="v" cx="12" cy="12" r="10"/></svg><span id="xpLv">Nv 1</span><i class="xpbar"><b></b></i></button><button class="b" id="bSet" data-i="sliders" aria-label="Configurações"></button></header>
 <main><div id="page" aria-live="off"></div><aside id="pw" aria-live="polite"></aside></main>
+<div id="mastTxt" class="mast-txt" aria-live="off"></div>
 <footer role="toolbar" aria-label="Controles de leitura">
 <div id="dock" aria-hidden="true" hidden></div>
 <ol id="steps" aria-hidden="true" hidden><li data-k="0" data-i="ear"><span>Ouvir</span></li><li data-k="1" data-i="mic"><span>Falar</span></li><li data-k="2" data-i="done"><span>Nota</span></li></ol>
@@ -35,10 +32,12 @@
 <dialog id="dImp"><form method="dialog"><label for="tx">Cole um texto (português e italiano misturados). Use [it] ou [pt] no começo de uma frase para forçar o idioma.</label><textarea id="tx"></textarea><p><button class="b" value="ok">Estudar</button> <button class="b" value="x">Cancelar</button></p></form></dialog>
 <dialog id="dTrl"><div id="trl"></div><p><button class="b" id="trlX">Fechar</button></p></dialog>
 <dialog id="dRev"><div id="rv" aria-live="polite"></div><p><button class="b" id="rvX">Fechar</button></p></dialog>
+<dialog id="dProg"><div id="pg"></div><p><button class="b" id="pgX">Fechar</button></p></dialog>
 <dialog id="dSet"><form method="dialog">
 <label for="vpt">Voz do português</label><select id="vpt"><option value="pt-BR-FranciscaNeural">Francisca</option><option value="pt-BR-AntonioNeural">Antonio</option></select>
 <label for="sl">Idioma de estudo (cole um texto novo depois de trocar)</label><select id="sl"></select>
 <label for="vit">Voz do idioma de estudo</label><select id="vit"></select>
+<label for="rw">Recompensas</label><select id="rw"><option value="full">Completas (XP, conquistas, padrões)</option><option value="soft">Discretas (só XP e recorde)</option><option value="off">Desligadas</option></select>
 <label for="mo">Movimento da palavra</label><select id="mo"><option value="none">Nenhum</option><option value="soft">Suave (só cor)</option><option value="hop">Pulo</option></select>
 <label for="fs">Tamanho do texto</label><input id="fs" type="range" min="0.9" max="1.8" step="0.1" value="1" style="width:100%">
 <label for="vthr">Volume mínimo para contar como fala: <output id="vthrV"></output> (menor = mais sensível)</label><input id="vthr" type="range" min="0.005" max="0.05" step="0.005" style="width:100%">

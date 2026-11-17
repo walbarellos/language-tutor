@@ -1,6 +1,9 @@
 // Ponto de entrada: monta os módulos e liga os botões. Nenhuma regra de negócio aqui.
 import { $, warn, ic, hydrate } from "./util.js";
 import { dock } from "./dock.js";
+import { initRewards, onListen, markMastery } from "./recompensa.js";
+import * as live from "./live.js";
+import { trapNote } from "./diff.js";
 import { app } from "./state.js";
 import { AudioController } from "./audio.js";
 import { Player } from "./player.js";
@@ -20,10 +23,9 @@ Rispondo che si vorrebbe essere l’uno e l’altro; ma perché egli è difficil
 
 // ---------- montagem ----------
 const audio = new AudioController();
-const player = new Player({ audio, view, voiceFor: l => LANGS[l].voice, onHeard: markHeard });
+const player = new Player({ audio, view, voiceFor: l => LANGS[l].voice, onHeard: (i, ranged) => { markHeard(i, ranged); if (!ranged) onListen(i); } });
 const recorder = new Recorder({ vadCfg: getVad });   // lido a cada gravação: mexer nos controles vale já na próxima frase
 recorder.onLevel = l => dock.level(l);                 // medidor ao vivo (painel)
-recorder.onInterim = text => dock.live(text);          // texto ao vivo enquanto você fala
 
 // Faixa do Modo Treino: passos (Ouvir, Falar, Nota) + o que fazer agora. O painel ao vivo (dock) mostra o medidor.
 const coach = $("#coach"), steps = $("#steps"); let pos = "";
@@ -52,7 +54,9 @@ const trainView = {
 };
 const trainer = new Trainer({ player, recorder, score: analyze, view: trainView });
 Object.assign(app, { audio, player, recorder, trainer });
-hydrate();
+hydrate(); initRewards();
+dock.onRec = on => (on ? live.start(app.segs[app.player.i]) : live.stop());   // palavras ao vivo enquanto grava
+dock.noteFn = () => { const s = app.segs[app.player.i]; return s && s.lang === "it" ? trapNote(s.tokens) : ""; };   // armadilhas da frase
 followScroll(player);
 initSrs(); initRecButton();
 api.progress().then(j => { app.prog = j.progress || {}; }).catch(() => {});

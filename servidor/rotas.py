@@ -93,7 +93,7 @@ class H(BaseHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path)
         if u.path == "/api/asr":
             lang = urllib.parse.parse_qs(u.query)["lang"][0]; audio = self.rfile.read(n)
-            return self._json(lambda: {"text": fala.transcrever(audio, lang)})
+            return self._json(lambda: fala.transcrever_det(audio, lang))
         if u.path not in POST:
             self.rfile.read(n)
             return self._send(404, "text/plain; charset=utf-8", b"nao encontrado")
