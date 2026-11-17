@@ -37,7 +37,9 @@ footer{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:ce
 dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--fg);width:min(560px,92vw)}
 dialog label{display:block;margin:10px 0 2px;color:var(--mut);font-size:.85rem}dialog select,dialog textarea{width:100%;padding:8px;background:var(--bg);border:1px solid var(--line);border-radius:8px}
 textarea{min-height:240px}
-[data-listen=on] .seg.it:not(.rev) .w{filter:blur(7px);pointer-events:none}[data-listen=on] .seg.it:not(.rev) .tr{visibility:hidden}.rvb{display:none;float:right;min-height:32px;padding:2px 10px;font-size:.8rem}[data-listen=on] .seg.it .rvb{display:inline-block}
+[data-listen=on] .seg.it:not(.rev) .w{filter:blur(7px);pointer-events:none}[data-listen=on] .seg.it:not(.rev) .tr{visibility:hidden}
+.rvb{display:none!important;float:right;min-height:32px;padding:2px 10px;font-size:.8rem}
+[data-listen=on] .seg.it .rvb{display:inline-flex!important}
 [data-freq=on] .w.f1{background:color-mix(in srgb,#2e9d57 24%,transparent)}[data-freq=on] .w.f2{background:color-mix(in srgb,#d9a21b 22%,transparent)}[data-freq=on] .w.now{background:color-mix(in srgb,var(--acc) 28%,transparent)}
 rt{font:.5em/1.2 system-ui,sans-serif;color:var(--mut)}
 dialog{max-height:85vh;overflow:auto}
