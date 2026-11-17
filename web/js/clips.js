@@ -1,13 +1,21 @@
-// Ponte entre "texto + voz" e o AudioController: chave estável, carregador e alinhamento palavra↔tempo.
+// Ponte entre "texto + voz + velocidade" e o AudioController: chave estável, carregador e alinhamento palavra↔tempo.
 import { api } from "./api.js";
 
-export const clipKey = (text, voice) => voice + "|" + text;   // a velocidade NÃO entra: o navegador muda a velocidade
+export const rateToStr = r => {
+  if (!r || r === 1 || r === "1" || r === "+0%") return "+0%";
+  if (typeof r === "string") return r;
+  const pct = Math.round((Number(r) - 1) * 100);
+  return `${pct >= 0 ? "+" : ""}${pct}%`;
+};
 
-export const loaderFor = (text, voice) => async () => {
-  const j = await api.tts(text, voice);
+export const clipKey = (text, voice, rate = 1) => voice + "|" + rateToStr(rate) + "|" + text;
+
+export const loaderFor = (text, voice, rate = 1) => async () => {
+  const rStr = rateToStr(rate);
+  const j = await api.tts(text, voice, rStr);
   const bin = atob(j.audio), u8 = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
-  return { url: URL.createObjectURL(new Blob([u8], { type: "audio/mpeg" })), words: j.words };
+  return { url: URL.createObjectURL(new Blob([u8], { type: "audio/mpeg" })), words: j.words, rate };
 };
 
 // Alinha pela POSIÇÃO no texto, não pela igualdade das palavras: funciona mesmo quando a voz e o segmentador dividem diferente (japonês)

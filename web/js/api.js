@@ -5,7 +5,7 @@ const get = url => fetch(url).then(unwrap);
 const q = encodeURIComponent;
 
 export const api = {
-  tts: (text, voice) => post("/tts", { text, voice }),
+  tts: (text, voice, rate = "+0%") => post("/tts", { text, voice, rate }),
   reading: words => post("/api/reading", { words }),
   freq: (lang, words) => post("/api/freq", { lang, words }),
   detect: (texts, cands) => post("/api/detect", { texts, cands }),

@@ -17,7 +17,7 @@ export class Player {
 
   setSegs(segs) { this.stop(); this.audio.clearPrefetch(); this.segs = segs; this.i = 0; this.select(0, { scroll: false }); this.prefetchFrom(0); }
   select(i, { scroll = false } = {}) { this.i = Math.max(0, Math.min(this.segs.length - 1, i)); this.view.select(this.i, { scroll }); }
-  setSpeed(s) { this.speed = s; this.audio.setRate(s); }
+  setSpeed(s) { this.speed = Number(s); this.audio.setRate(1); this.prefetchFrom(this.i); }
   get busy() { return this.audio.active || this.waiting || this.loading; }
   _ui() {
     this.view.playing(this.busy && !this.audio.paused);
@@ -25,15 +25,15 @@ export class Player {
     this.view.status?.(st, st === "gap" ? { ms: this.audio.durationMs / this.speed } : {});   // painel ao vivo (opcional)
   }
 
-  async clipFor(seg) {
-    const voice = this.voiceFor(seg.lang), key = clipKey(seg.text, voice);
-    const clip = await this.audio.load(key, loaderFor(seg.text, voice));   // single-flight (A3)
+  async clipFor(seg, rate = this.speed) {
+    const voice = this.voiceFor(seg.lang), key = clipKey(seg.text, voice, rate);
+    const clip = await this.audio.load(key, loaderFor(seg.text, voice, rate));   // single-flight (A3)
     alignSeg(seg, clip, key);
     return clip;
   }
-  prefetchFrom(i, n = 3) {
+  prefetchFrom(i, n = 3, rate = this.speed) {
     this.audio.prefetch(this.segs.slice(i, i + n).map(s => {
-      const v = this.voiceFor(s.lang); return { key: clipKey(s.text, v), loader: loaderFor(s.text, v) };
+      const v = this.voiceFor(s.lang); return { key: clipKey(s.text, v, rate), loader: loaderFor(s.text, v, rate) };
     }));
   }
 
@@ -45,16 +45,16 @@ export class Player {
     const seg = this.segs[i];
     this.loading = true; this._ui();
     let clip;
-    try { clip = await this.clipFor(seg); }
+    try { clip = await this.clipFor(seg, rate); }
     catch (e) { if (tk === this.token) { this.loading = false; this._ui(); this.view.error(e); } return { r: "cancelled", tk }; }
     if (tk !== this.token) return { r: "cancelled", tk };
     this.loading = false;
     const range = word && word.t0 !== undefined ? { t0: word.t0, t1: word.t1 } : null;
     this.onHeard?.(i, !!range);
-    this.prefetchFrom(i + 1);
+    this.prefetchFrom(i + 1, 3, this.speed);
     try {
       const r = await this.audio.play(clip, {
-        from: range ? range.t0 : 0, to: range ? range.t1 : null, rate,
+        from: range ? range.t0 : 0, to: range ? range.t1 : null, rate: 1,
         onTick: t => this._tick(seg, t),
       });
       if (tk === this.token) this.view.mark(seg, -1);
@@ -87,9 +87,9 @@ export class Player {
     this._ui();
   }
   // Fala um texto avulso (revisão de cartas, "Original" do shadowing) e a sua própria gravação: tudo passa pelo mesmo controller (A1/A2).
-  async speak(text, lang) {
+  async speak(text, lang, rate = this.speed) {
     this.stop(); const voice = this.voiceFor(lang);
-    try { const clip = await this.audio.load(clipKey(text, voice), loaderFor(text, voice)); return await this.audio.play(clip, { rate: this.speed }); }
+    try { const clip = await this.audio.load(clipKey(text, voice, rate), loaderFor(text, voice, rate)); return await this.audio.play(clip, { rate: 1 }); }
     catch (e) { this.view.error(e); }
   }
   async playUrl(url) { this.stop(); try { return await this.audio.play({ url }, { rate: 1 }); } catch (e) { this.view.error(e); } }

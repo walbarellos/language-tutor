@@ -11,16 +11,19 @@ import edge_tts
 
 
 class TTSEngine:  # contrato: trocar de motor de voz = criar outra subclasse
-    def synth(self, text, voice):
+    def synth(self, text, voice, rate="+0%"):
         raise NotImplementedError  # devolve (áudio mp3, [{"t","d","text"}]) em milissegundos
 
 
 class EdgeTTS(TTSEngine):
-    async def _go(self, text, voice):
+    async def _go(self, text, voice, rate="+0%"):
         try:  # edge-tts 7+ precisa pedir tempo por palavra
-            com = edge_tts.Communicate(text, voice, boundary="WordBoundary")
+            com = edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary")
         except TypeError:
-            com = edge_tts.Communicate(text, voice)
+            try:
+                com = edge_tts.Communicate(text, voice, rate=rate)
+            except TypeError:
+                com = edge_tts.Communicate(text, voice)
         audio, words = bytearray(), []
         async for c in com.stream():
             if c["type"] == "audio":
@@ -29,8 +32,8 @@ class EdgeTTS(TTSEngine):
                 words.append({"t": c["offset"] / 10000, "d": c["duration"] / 10000, "text": c["text"]})
         return bytes(audio), words
 
-    def synth(self, text, voice):
-        return asyncio.run(self._go(text, voice))
+    def synth(self, text, voice, rate="+0%"):
+        return asyncio.run(self._go(text, voice, rate=rate))
 
 
 class CachedTTS(TTSEngine):  # guarda em disco: a 2ª leitura é instantânea e funciona offline
@@ -58,14 +61,24 @@ class CachedTTS(TTSEngine):  # guarda em disco: a 2ª leitura é instantânea e 
             f.write(dados)
         os.replace(tmp, caminho)
 
-    def synth(self, text, voice):
-        chave = hashlib.sha1(f"{voice}|{text}".encode()).hexdigest()
+    def synth(self, text, voice, rate="+0%"):
+        if isinstance(rate, (int, float)):
+            pct = round((rate - 1.0) * 100)
+            rate = f"{pct:+d}%"
+        rate_str = rate or "+0%"
+        chave = hashlib.sha1(f"{voice}|{rate_str}|{text}".encode()).hexdigest()
         base = os.path.join(self.pasta, chave)
         with self._trava(chave):  # T1
             hit = self._ler(base)
+            if not hit and rate_str in ("+0%", "0%"):
+                chave_legada = hashlib.sha1(f"{voice}|{text}".encode()).hexdigest()
+                hit = self._ler(os.path.join(self.pasta, chave_legada))
             if hit:
                 return hit
-            audio, words = self.inner.synth(text, voice)
+            try:
+                audio, words = self.inner.synth(text, voice, rate=rate_str)
+            except TypeError:
+                audio, words = self.inner.synth(text, voice)
             if audio:  # json primeiro, mp3 por último (T2)
                 self._gravar_atomico(base + ".json", json.dumps(words), "w")
                 self._gravar_atomico(base + ".mp3", audio, "wb")

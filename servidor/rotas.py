@@ -13,7 +13,14 @@ from . import armazem, config, consultas, fala, palavras, voz
 
 
 def _tts(d):
-    audio, words = voz.ENGINE.synth(d["text"], d["voice"])
+    rate = d.get("rate", "+0%")
+    if isinstance(rate, (int, float)):
+        pct = round((rate - 1.0) * 100)
+        rate = f"{pct:+d}%"
+    try:
+        audio, words = voz.ENGINE.synth(d["text"], d["voice"], rate=rate)
+    except TypeError:
+        audio, words = voz.ENGINE.synth(d["text"], d["voice"])
     if not audio:
         raise RuntimeError("a Microsoft não devolveu áudio (sem internet?)")
     return {"audio": base64.b64encode(audio).decode(), "words": words}
