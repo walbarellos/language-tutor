@@ -2,6 +2,64 @@
   "lang": "it",
   "situacoes": [
     {
+      "id": "micro_blocos",
+      "nivel": 0,
+      "titulo": "Micro-blocos & Reações Essenciais (Chunks Curtos)",
+      "objetivo": "Construir a base intuitiva: frases de 2 a 4 palavras onde você sente o significado na hora e a entonação sai natural.",
+      "registro": "essencial_visceral",
+      "cultural_note": "Italianos se comunicam com blocos curtos carregados de intenção. Antes de encarar frases longas, você precisa ter esses reflexos automáticos na ponta da língua.",
+      "linhas": [
+        {
+          "q": "Você",
+          "t": "Dai, andiamo!",
+          "p": "Bora, vamos lá!",
+          "nuance": "'Dai' é o termo mais onipresente da Itália: incentivo ('bora!'), pressa ('anda logo') ou incredulidade ('fala sério')."
+        },
+        {
+          "q": "Você",
+          "t": "Non ha senso.",
+          "p": "Não faz o menor sentido / Não tem lógica.",
+          "nuance": "A expressão mais visceral para apontar que algo não fecha a conta ou não tem coerência."
+        },
+        {
+          "q": "Você",
+          "t": "Ho capito tutto.",
+          "p": "Entendi tudo / Saquei perfeitamente.",
+          "nuance": "Verbo 'capire' no passato prossimo com 'ho'. Afirmação rápida, limpa e segura."
+        },
+        {
+          "q": "Você",
+          "t": "Che cosa vuol dire?",
+          "p": "O que isso quer dizer / significa?",
+          "nuance": "A pergunta-chave para investigar qualquer conceito, código ou palavra nova."
+        },
+        {
+          "q": "Você",
+          "t": "Lascia perdere.",
+          "p": "Larga mão / Deixa pra lá / Esquece isso.",
+          "nuance": "Equivale ao nosso 'deixa quieto', para cortar papo furado ou assunto inútil."
+        },
+        {
+          "q": "Você",
+          "t": "Tutto a posto.",
+          "p": "Tudo certo / Tudo sob controle.",
+          "nuance": "A resposta padrão para quando alguém pergunta como vão as coisas ou se deu certo."
+        },
+        {
+          "q": "Você",
+          "t": "Non ci credo!",
+          "p": "Não acredito nisso! / Mentira!",
+          "nuance": "O 'ci' substitui 'nisso/naquilo'. A ênfase vocal sobe com força no 'credo'."
+        },
+        {
+          "q": "Você",
+          "t": "Che te ne pare?",
+          "p": "O que você acha disso?",
+          "nuance": "Modo extremamente nativo e elegante de pedir a opinião do outro sobre algo concreto."
+        }
+      ]
+    },
+    {
       "id": "cafe",
       "nivel": 1,
       "titulo": "Pedir um café no balcão",

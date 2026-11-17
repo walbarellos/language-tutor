@@ -1,5 +1,5 @@
 // Preferências guardadas no navegador (localStorage). Tudo em try/catch: janela privada ou dados bloqueados não quebram nada.
-export const VAD_DEFAULT = { thr: 0.015, silenceMs: 900 };   // volume mínimo que conta como fala · silêncio que encerra a fala
+export const VAD_DEFAULT = { thr: 0.015, silenceMs: 1600 };   // volume mínimo que conta como fala · silêncio que encerra a fala
 const KEY = "lt.vad";
 const clamp = (v, lo, hi, def) => (Number.isFinite(+v) && v !== null && v !== "" ? Math.min(hi, Math.max(lo, +v)) : def);
 

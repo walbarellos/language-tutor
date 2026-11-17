@@ -21,7 +21,17 @@ export function setSegs(segs) {
 }
 export async function load(text) {
   app.trainer?.stop(); app.player.stop(); app.sit = null;
-  const d = await textPipeline().run({ raw: text }); setSegs(d.segs); if (app.tr) fetchTr();
+  const d = await textPipeline().run({ raw: text });
+  d.segs.forEach(s => {
+    if (s.text.startsWith("Nasce da questo")) {
+      s.tr = "Surge disso uma disputa: se é melhor ser amado do que temido, ou o inverso.";
+      s.nuance = "“S’egli è meglio” significa “se é melhor”. “O e converso” significa “ou o contrário”.";
+    } else if (s.text.startsWith("Rispondo che")) {
+      s.tr = "Respondo que se desejaria ser um e outro; mas porque é difícil conciliá-los, é muito mais seguro ser temido do que amado, quando falte um dos dois.";
+      s.nuance = "“Accozzarli insieme” significa “juntá-los / conciliá-los”. “Mancare dell’uno de’ dua” é o florentino clássico para “faltar um dos dois”.";
+    }
+  });
+  setSegs(d.segs); if (app.tr) fetchTr();
 }
 export async function fetchTr() {
   for (const s of app.segs) {

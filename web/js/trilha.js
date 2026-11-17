@@ -20,15 +20,16 @@ export async function openTrail() {
     const j = await api.trilha(app.study);
     box.textContent = ""; box.append(E("h2", "Trilha: " + STUDYL[app.study].n));
     if (!j.situacoes.length) { box.append(E("p", "Ainda não há trilha para este idioma. Crie trilhas/" + app.study + ".json usando it.json como modelo.")); return; }
-    let ult = 0;
+    let ult = -1;
     const nomes = {
-      1: "Nível 1 · Sobrevivência com Atrito",
+      0: "Nível 0 · Micro-blocos & Reações Essenciais (2 a 4 palavras)",
+      1: "Nível 1 · Sobrevivência com Atrito Real",
       2: "Nível 2 · Conexão Social, Gírias & Hesitação",
       3: "Nível 3 · Debate, Filosofia & Pensamento Crítico",
       4: "Nível 4 · Registros & Expressões Idiomáticas"
     };
     j.situacoes.forEach(s => {
-      if (s.nivel && s.nivel !== ult) {
+      if (s.nivel !== undefined && s.nivel !== ult) {
         ult = s.nivel;
         box.append(E("h3", nomes[s.nivel] || ("Nível " + s.nivel)));
       }

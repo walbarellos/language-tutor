@@ -23,7 +23,11 @@ export function scoreTokens(tokens, heard, { ja = false, heardHira = null } = {}
   }
   const hit = new Array(tokens.length).fill(0), tot = new Array(tokens.length).fill(0);
   own.forEach((o, k) => { tot[o]++; if (ok[k]) hit[o]++; });
-  return { pct: Math.round(100 * ok.filter(Boolean).length / n), frac: tokens.map((_, k) => tot[k] ? hit[k] / tot[k] : null) };
+  const matched = ok.filter(Boolean).length, rawPct = Math.round(100 * matched / n);
+  const excess = Math.max(0, m - Math.round(n * 1.15));
+  const penalty = Math.min(35, Math.round((excess / n) * 35));
+  const pct = Math.max(0, rawPct - penalty);
+  return { pct, frac: tokens.map((_, k) => tot[k] ? hit[k] / tot[k] : null) };
 }
 
 // 85%: tolera 1 letra errada em palavras de 7+ letras (ruído da transcrição); abaixo de 50% a palavra não foi entendida.

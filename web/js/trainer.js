@@ -44,7 +44,7 @@ export class Trainer {
       }
       this.view.step("speak");
       let rec;
-      try { rec = await this.recorder.record({ vad: true, maxMs: player.audio.durationMs * 2 + 4000 }); }
+      try { rec = await this.recorder.record({ vad: true, maxMs: Math.max(35000, player.audio.durationMs * 4) }); }
       catch { this.mic = false; continue; }
       if (!alive()) return false;
       if (rec.reason === "stop-nospeech") { this.view.step("silent"); await this._nap(700); if (!alive()) return false; continue; }
